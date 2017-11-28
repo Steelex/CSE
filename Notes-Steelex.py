@@ -27,4 +27,29 @@ name = input("What is your name?")
 print("Hello %s." % name)
 #print(name)
 age = input("What is your age? ")
-print("%s?! That old? You belong in a museum.")
+print("%s?! That old? You belong in a museum." % age)
+
+# Change to file
+
+def print_hw():
+    print("Hello World")
+
+
+print_hw()
+
+
+def say_hi(name):
+    print("Hello %s." % name)
+    print("I hope you have a fantastic day.")
+
+
+say_hi("Stanger Danger")
+
+
+def birhtday(age):
+    age += 1    # age = age + 1
+
+
+say_hi("Stranger Danger")
+print("Stranger Danger is 15. Next Year:")
+birthday(15)
