@@ -1,3 +1,4 @@
+import random
 print("Hello World")
 
 # i like pickles
@@ -8,7 +9,8 @@ print(5*3)
 print(6/2)
 print(3 ** 2)
 
-print() # Creates a blank line
+print()
+# Creates a blank line
 print("See if you can figure this out")
 print(15 % 5)
 
@@ -18,36 +20,42 @@ car_type = "Tesla Model 3"
 car_cylinders = 8
 car_mpg = 9000.1
 
-#inline printing
+# inline printing
 print("My car is the %s." % car_name)
 print("My car is the %s. It is a %s" % (car_name, car_type))
 
 # Taking Input
 name = input("What is your name?")
 print("Hello %s." % name)
-#print(name)
+# print(name)
 age = input("What is your age? ")
 print("%s?! That old? You belong in a museum." % age)
-
 # Change to file
+
 print()
+
+
 def print_hw():
+
     print("Hello World")
 
 
 print_hw()
 
 
-def say_hi(name):
+def say_hi():
+
     print("Hello %s." % name)
-    print("I hope you have a fantastic day.")
 
 
-say_hi("Stanger Danger")
+print("I hope you have a fantastic day.")
+
+
+say_hi("Stranger Danger")
 
 
 def birthday(age):
-    age += 1    # age = age + 1
+    age += 1   # age = age + 1
 
 
 say_hi("Stranger Danger")
@@ -69,7 +77,10 @@ print(f(3))
 print(f(3) + f(5))
 
 # if statements
+
+
 def grade_calc(percentage):
+
     if percentage >= 90:
         return "A"
     elif percentage >= 80 and percentage < 90: # else if
@@ -84,10 +95,10 @@ def grade_calc(percentage):
     # Loops
 
 
-#for num in range(5):
- #   print(num + 1)
+# for num in range(5):
+# print(num + 1)
 
-#for mystery in "Hello World":
+# for mystery in "Hello World":
 #    print(mystery)
 
 a = 1
@@ -96,12 +107,12 @@ while a < 10:
     a += 1
 
     response = ""
-#while response !="Hello":
+# while response !="Hello":
 #        response = input("Say \"Hello\"")
 
 print()
 
-print("Hello \nWorld") #\n means newline
+print("Hello \nWorld") # \n means newline
 
-import random
+
 print(random.randint(0, 6))
