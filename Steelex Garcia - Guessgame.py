@@ -7,4 +7,4 @@ print("Ready? GO!")
 
 print()
 
-print(mystery (1, 50))
+print(random.randrange(1, 50))

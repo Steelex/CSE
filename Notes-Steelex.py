@@ -51,14 +51,15 @@ def say_hi():
 print("I hope you have a fantastic day.")
 
 
-say_hi("Stranger Danger")
+print("Stranger Danger")
 
 
 def birthday(age):
-    age += 1   # age = age + 1
+    age += 1
+
+# age = age + 1
 
 
-say_hi("Stranger Danger")
 print("Stranger Danger is 15. Next Year:")
 birthday(15)
 
@@ -69,8 +70,10 @@ birthday(15)
 
 print()
 
+
 def f(x):
-    return x**5 + 4 * x **2 + 4-17 * x**2 + 4
+
+    return x**5 + 4 * x ** 2 + 4-17 * x**2 + 4
 
 
 print(f(3))
@@ -112,7 +115,8 @@ while a < 10:
 
 print()
 
-print("Hello \nWorld") # \n means newline
+print("Hello \nWorld")
 
+# \n means newline
 
-print(random.randint(0, 6))
+print(random.randint/(0, 6))
