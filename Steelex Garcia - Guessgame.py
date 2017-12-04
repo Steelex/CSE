@@ -8,3 +8,5 @@ print("Ready? GO!")
 print()
 
 print(random.randrange(1, 50))
+if number >= (50)
+
