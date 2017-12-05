@@ -38,3 +38,18 @@ def happy_bday(name):
     print("Happy Birthday to you,")
     print("Happy Birthday dear" % name)
     print("Happy Birthday to you!")
+
+# 12.5.17
+"""Write a function called add_py
+that takes one parameter called "name"
+and prints out name.py
+example:
+add_py("I_ate_some") == "I_ate_some.py"
+"""
+
+def add_py(name):
+    print("%s.py" % name)
+# Solution One
+    print(name + ".py")
+# Solution Two
+

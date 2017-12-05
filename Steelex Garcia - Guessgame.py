@@ -1,12 +1,10 @@
 import random
 # Steelex Garcia
 
-print("In this game, you have to guess one number out of the numbers one through fifty.")
-print("You have 5 chances to guess the right number.")
-print("Ready? GO!")
-
 print()
 
-print(random.randrange(1, 50))
-if number >= (50)
 
+c = (random.randint(1, 50))
+print("What is c? Choose a number between 1 and 50 or equal to 1 and 50. You have 5 guesses.")
+number = input("Pick a number:")
+print( c == number)
