@@ -4,7 +4,9 @@ import random
 print()
 
 
-c = (random.randint(1, 50))
-print("What is c? Choose a number between 1 and 50 or equal to 1 and 50. You have 5 guesses.")
-number = input("Pick a number:")
-print( c == number)
+rightanswer = (random.randint(1, 50))
+print("What is the number? Choose a number between 1 and 50 or equal to 1 and 50.")
+print("You have 5 chances:")
+answer = input()
+print(c == answer)
+guess = 0
