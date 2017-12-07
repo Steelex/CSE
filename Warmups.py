@@ -15,9 +15,9 @@
 # works but there is a better way
 
 
-def reverse_order(first_name, last_name):
+# def reverse_order(first_name, last_name):
     # print("%s %s" % (last_name, first_name))
-    print(last_name + " " + first_name) # Concatenation
+#     print(last_name + " " + first_name) # Concatenation
 
 #   def reverse_order():
 #   first_name = input("What is your first name?")
@@ -61,8 +61,28 @@ def reverse_order(first_name, last_name):
 # """
 
 
-def add(num1,num2,num3):
-    print(num1 + num2 + num3)
+# def add(num1,num2,num3):
+#     print(num1 + num2 + num3)
 
 
-add(90, 900, 9000)
+# add(90, 900, 9000)
+
+
+# 12.7.16
+# Write a function called "repeat"
+# that takes one parameter (string)
+# and prints it three times.
+#
+# example:
+# repeat("Hello") Prints:
+# hello
+# hello
+# hello
+
+def repeat(string):
+    print(string)
+    print(string)
+    print(string)
+
+    for x in range(3):
+        print(string)
