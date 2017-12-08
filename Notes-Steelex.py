@@ -57,7 +57,7 @@ print("Stranger Danger")
 def birthday(age):
     age += 1
 
-# age = age + 1
+age = age + 1
 
 
 print("Stranger Danger is 15. Next Year:")
@@ -95,7 +95,7 @@ def grade_calc(percentage):
     else:
         return "F"
 
-    # Loops
+# Loops
 
 
 # for num in range(5):
