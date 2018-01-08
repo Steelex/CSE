@@ -5,7 +5,7 @@ import random
 
 print()
 # print(number)   to know what the number is
-
+# Describes exactly ONE turn. The while is the Game Controller.
 number = (random.randint(1, 50))
 print("I am thinking of a number between 1 and 50.")
 guess = 0
