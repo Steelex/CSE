@@ -11,21 +11,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Notes-Steelex.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Notes-Steelex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Notes-Steelex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+            <state relative-caret-position="323">
+              <caret line="168" column="14" lean-forward="false" selection-start-line="168" selection-start-column="14" selection-end-line="168" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Steelex Garcia P.7 Lucky 7's.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Steelex Garcia P.7 Lucky 7's.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Steelex Garcia P.7 Lucky 7's.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+              <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -34,8 +34,8 @@
       <file leaf-file-name="Steelex Garcia - Guessgame.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Steelex Garcia - Guessgame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -57,9 +57,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Warmups.py" />
-        <option value="$PROJECT_DIR$/Notes-Steelex.py" />
         <option value="$PROJECT_DIR$/Steelex Garcia - Guessgame.py" />
         <option value="$PROJECT_DIR$/Steelex Garcia P.7 Lucky 7's.py" />
+        <option value="$PROJECT_DIR$/Notes-Steelex.py" />
       </list>
     </option>
   </component>
@@ -121,7 +121,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Steelex Garcia P.7 Lucky 7's">
+  <component name="RunManager" selected="Python.Notes-Steelex">
     <configuration name="Notes-Steelex" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -198,10 +198,10 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.Steelex Garcia P.7 Lucky 7's" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Steelex Garcia - Guessgame " />
-        <item index="2" class="java.lang.String" itemvalue="Python.Warmups" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Notes-Steelex" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Notes-Steelex" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Steelex Garcia P.7 Lucky 7's" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Steelex Garcia - Guessgame " />
+        <item index="3" class="java.lang.String" itemvalue="Python.Warmups" />
       </list>
     </recent_temporary>
   </component>
@@ -253,6 +253,30 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Notes-Steelex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="10" lean-forward="false" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Steelex Garcia - Guessgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Steelex Garcia P.7 Lucky 7's.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Notes-Steelex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -558,16 +582,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Steelex Garcia - Guessgame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Notes-Steelex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -575,7 +591,15 @@
     <entry file="file://$PROJECT_DIR$/Steelex Garcia P.7 Lucky 7's.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Notes-Steelex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="168" column="14" lean-forward="false" selection-start-line="168" selection-start-column="14" selection-end-line="168" selection-end-column="14" />
           <folding />
         </state>
       </provider>

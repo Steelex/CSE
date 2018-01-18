@@ -1,15 +1,16 @@
 import random
-print("Hello World")
+'''
+# print("Hello World")
 
 # i like pickles
 
-print(3+5)
-print(5-3)
-print(5*3)
-print(6/2)
-print(3 ** 2)
+# print(3+5)
+# print(5-3)
+# print(5*3)
+# print(6/2)
+# print(3 ** 2)
 
-print()
+# print()
 # Creates a blank line
 print("See if you can figure this out")
 print(15 % 5)
@@ -129,8 +130,40 @@ print(1 == 1 and 4<=5)
 print(1 < 0 or 5 > 1)
 
 # Recasting
-c = '1'
-print(c == 1) # False is -C is a string, 1 is an int
-print(int(c) == 1) # True - Compares two ints
-print(c == str(1)) # True - Compares two strings
+# c = '1'
+# print(c == 1) # False is -C is a string, 1 is an int
+# print(int(c) == 1) # True - Compares two ints
+# print(c == str(1)) # True - Compares two strings
+'''
 
+# Lists
+the_count = [1, 2, 3, 4, 5]
+shopping_list = ["Noodles", "Eggrolls", "Milk", "Rice", "Soda"]
+
+print(shopping_list[2])
+
+
+print(len(shopping_list))
+
+# Going through a list
+for item in shopping_list:
+    print(item)
+
+for num in the_count:
+    print(num * 2)
+
+    len(shopping_list)  # GIves me the length of the list
+    range(3) # Gives a list of the numbers 0 thourg 2
+    range(len(shopping_list)) #A list of every indix in a list
+
+    for num in range(len(Shopping_list)):
+        item = shopping_list [num]
+        print ("The item %d is @d" % (num, item))
+
+# turn ino a list
+strl = "Hello Class"
+listOne = list(strl)
+print(listOne)
+listOne[11] = '.'
+print(listOne)
+print(listOne)

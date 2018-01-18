@@ -24,3 +24,4 @@ while money > 0 and broke is False:
     if money == 0:
         broke = True
         print("Rounds played", played)
+        print("Highest money is %s on round %s" % (high, numb))
