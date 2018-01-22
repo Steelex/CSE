@@ -9,4 +9,8 @@ A general guide for Hangman
 4. Reveal letters already guessed
 5. Create the win condition
 """
-word_bank = ("A step ahead of cataclysm" "Metal is perfection" "I feel your fear" "Looks can be decieving" "KhaZix" "Darius" "")
+word_bank = ["A step ahead of cataclysm", "Metal is perfection", "I feel your fear", "Looks can be deceiving",
+             "Consume and adapt", "Unmatched Power", "Imagine if I had a real weapon", "We are as one",
+             "Trample their bones", "No pain no drain"]
+
+lives = 10

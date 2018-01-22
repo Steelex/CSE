@@ -1,4 +1,5 @@
 import random
+import string
 '''
 # print("Hello World")
 
@@ -154,16 +155,16 @@ for num in the_count:
 
 len(shopping_list)  # GIves me the length of the list
 
-range(3) # Gives a list of the numbers 0 thourg 2
+range(3)  # Gives a list of the numbers 0 through 2
 
-range(len(shopping_list)) # A list of every indix in a list
+range(len(shopping_list))  # A list of every index in a list
 
 for num in range(len(shopping_list)):
-    item = shopping_list [num]
-    print ("The item %s is %s" % (num, item))
+    item = shopping_list[num]
+    print("The item %s is %s" % (num, item))
 
 # turn ino a list
-strl = ("Hello Class!")
+strl = "Hello Class!"
 listOne = list(strl)
 print(listOne)
 listOne[11] = '.'
@@ -180,7 +181,6 @@ shopping_list.pop(0)
 print(shopping_list)
 
 # the string class
-import string
 print(string.ascii_letters)
 print(string.ascii_lowercase)
 print(string.punctuation)
