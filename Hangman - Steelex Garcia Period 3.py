@@ -1,4 +1,5 @@
 import random
+
 # Steelex Garcia
 # Period 3
 """
@@ -12,12 +13,21 @@ A general guide for Hangman
 word_bank = ["A step ahead of cataclysm", "Metal is perfection", "I feel your fear", "Looks can be deceiving",
              "Consume and adapt", "Unmatched Power", "Imagine if I had a real weapon", "We are as one",
              "Trample their bones", "No pain no drain"]
-correct_phrase = False
 lives = 10
-start = True
-letters_guessed = [""]
-while lives > 0 and correct_phrase is False:
-        random.shuffle(word_bank)
-        word = word_bank.pop(7)
-        word = (list(word))
-        print(word)
+word = (random.choice(word_bank))
+word = (list(word))
+strTwo = word
+lowercase = strTwo.lower()
+print(word)
+letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
+           "v", "w", "x", "y", "z"]
+words_guessed = []
+while lives > 0:
+    guess = input("Guess a letter or try the whole word. ")
+    if guess == word:
+        print("Good Job You Did It!")
+    if guess == word:
+        print("Good Job")
+    if guess != word:
+        lives -= 1
+        print("You have %s guesses left" % lives)
