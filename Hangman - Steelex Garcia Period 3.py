@@ -1,5 +1,5 @@
 import random
-
+import string
 # Steelex Garcia
 # Period 3
 """
@@ -16,11 +16,9 @@ word_bank = ["A step ahead of cataclysm", "Metal is perfection", "I feel your fe
 lives = 10
 word = (random.choice(word_bank))
 word = (list(word))
-strTwo = word
-lowercase = strTwo.lower()
+length = len(output)
 print(word)
-letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
-           "v", "w", "x", "y", "z"]
+letters = ["abcdefghijklmnopqrstuvwxyz"]
 words_guessed = []
 while lives > 0:
     guess = input("Guess a letter or try the whole word. ")
@@ -31,3 +29,4 @@ while lives > 0:
     if guess != word:
         lives -= 1
         print("You have %s guesses left" % lives)
+
