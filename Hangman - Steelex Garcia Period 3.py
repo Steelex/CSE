@@ -18,13 +18,13 @@ random_word = random.choice(word_bank)
 correct = list(random_word)
 print("This is Hangman. Each of my guesses are phrases are from LOL. Can you guess them? You have 10 tries.")
 letters_guessed = []
-guess = 10
+guess = 11
+guess -= 1
 while guess > 0:
     output = []
     for letter in random_word:
         if letter in letters_guessed:
             output.append(letter)
-            guess += 1
         else:
             output.append("*")
     print(output)
@@ -39,4 +39,4 @@ while guess > 0:
     if lowercase_guess in alphabet:
         alphabet.remove(lowercase_guess)
     if guess == 0:
-        print("Game Over. The words are %s" % random_word)
+        print("Game Over. The words are: %s" % random_word)
