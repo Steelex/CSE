@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Notes-Steelex.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Notes-Steelex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Notes-Steelex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3247">
-              <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="229" column="30" lean-forward="true" selection-start-line="229" selection-start-column="30" selection-end-line="229" selection-end-column="30" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -23,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Hangman - Steelex Garcia Period 3.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Hangman - Steelex Garcia Period 3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hangman - Steelex Garcia Period 3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="413">
+              <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -73,8 +73,8 @@
         <option value="$PROJECT_DIR$/Warmups.py" />
         <option value="$PROJECT_DIR$/Steelex Garcia - Guessgame.py" />
         <option value="$PROJECT_DIR$/Steelex Garcia P.7 Lucky 7's.py" />
-        <option value="$PROJECT_DIR$/Notes-Steelex.py" />
         <option value="$PROJECT_DIR$/Hangman - Steelex Garcia Period 3.py" />
+        <option value="$PROJECT_DIR$/Notes-Steelex.py" />
       </list>
     </option>
   </component>
@@ -122,7 +122,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Hangman - Steelex Garcia Period 3">
+  <component name="RunManager" selected="Python.Notes-Steelex">
     <configuration name="Hangman - Steelex Garcia Period 3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -217,8 +217,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Hangman - Steelex Garcia Period 3" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Notes-Steelex" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Notes-Steelex" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Hangman - Steelex Garcia Period 3" />
         <item index="2" class="java.lang.String" itemvalue="Python.Steelex Garcia P.7 Lucky 7's" />
         <item index="3" class="java.lang.String" itemvalue="Python.Steelex Garcia - Guessgame " />
         <item index="4" class="java.lang.String" itemvalue="Python.Warmups" />
@@ -701,16 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Notes-Steelex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3247">
-          <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Steelex Garcia P.7 Lucky 7's.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -721,8 +711,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Hangman - Steelex Garcia Period 3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state relative-caret-position="413">
+          <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Notes-Steelex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="229" column="30" lean-forward="true" selection-start-line="229" selection-start-column="30" selection-end-line="229" selection-end-column="30" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

@@ -135,7 +135,7 @@ print(1 < 0 or 5 > 1)
 # print(c == 1) # False is -C is a string, 1 is an int
 # print(int(c) == 1) # True - Compares two ints
 # print(c == str(1)) # True - Compares two strings
-'''
+
 
 # Lists
 the_count = [1, 2, 3, 4, 5]
@@ -190,3 +190,41 @@ print(string.digits)
 strTwo = "ThIs iS a VeRy Odd sEntence"
 lowercase = strTwo.lower()
 print(lowercase)
+'''
+
+# Dictionaries - Made up of Key: Value pairs
+dictionary = {'name': 'Lance', 'age': 23, 'height': 5 * 12 + 7}
+
+# Accessing dictionaries
+print(dictionary['name'])
+print(dictionary['age'])
+print(dictionary['height'])
+
+large_dictionary = {
+    'CA': 'California',
+    'FL': 'Florida',
+    'OH': 'Ohio',
+}
+
+print(large_dictionary['FL'])
+
+larger_dictionary = {
+    'CA': [
+        'Fresno',
+        'Sacramento',
+        'Lost Angelas'
+    ],
+    'FL': [
+        "Tampa",
+        "Orlando",
+        "Miami"
+    ],
+    'OH': [
+        "Cleavland",
+        "Cincinnati",
+    ]
+}
+
+print(larger_dictionary['FL'])
+print(larger_dictionary['FL'][2])
+print(larger_dictionary['OH'][1])
