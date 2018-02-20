@@ -10,14 +10,17 @@ A general guide for Hangman
 4. Reveal letters already guessed
 5. Create the win condition
 """
-word_bank = ["a step ahead of cataclysm", "metal is perfection", "i feel your fear", "looks can be deceiving",
-             "consume and adapt", "unmatched power", "imagine if i had a real weapon", "we are as one",
-             "trample their bones", "no pain no drain"]
+word_bank = ["monster", "metal", "fear", "deceiving",
+             "science", "unmatched", "power", "perfection",
+             "cataclysm", "pokemon", "charizard", "blastoise",
+             "scizor", "luffy", "bleach", "ichigo", "orihime",
+             "inhuman", "saitama", "naruto", "genos", "scare",
+             "lonely", "amazing"]
 guesses = 11
 alphabet = list(string.ascii_lowercase)
 random_word = random.choice(word_bank)
 correct = list(random_word)
-print("Choose a letter. These are quotes from League of Legends. You ten tries")
+print("Choose a letter. They are comepletely random You have ten tries")
 letters_guessed = []
 
 
@@ -33,7 +36,7 @@ while guesses > 0:
     join = " ".join(output)
     print(join)
     if output == correct:
-        print("You Win Good Job XD!")
+        print("You Win! You successfuly guessed the right word!")
         exit(0)
     print("These are your letters you can guess :), %s" % alphabet)
     ask_for_letter = input("Name a letter")
