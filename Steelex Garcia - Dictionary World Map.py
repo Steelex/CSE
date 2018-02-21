@@ -222,9 +222,21 @@ world_map = {
         'NAME': "Enemy Portal",
         'DESCRIPTION': "You are at the enemy portal. Clear a path for your minions to enter the portal.",
         'Paths': {
-            'EAST': 'RIGHT ALLY SAFETY ZONE',
-            'WEST': 'LEFT ALLY SAFETY ZONE',
-            'NORTH': 'MIDDLE COMBAT FIELD'
+            'WEST': 'RIGHT ENEMY SAFETY ZONE',
+            'EAST': 'LEFT ENEMY SAFETY ZONE',
+            'SOUTH': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'MIDDLE OF COMBAT FIELD': {
+        'NAME': "Combat field",
+        'DESCRIPTION': "You are at the combat field. The middle of the map. This is where you fight.",
+        'PATHS': {
+            'SW': 'ALLY OPEN FIELD WEST',
+            'SE': 'ALLY OPEN FIELD EAST',
+            'NE': 'ENEMY OPEN FIELD EAST',
+            'NW': 'ENEMY OPEN FIELD WEST',
+            'WEST': 'JUNGLE CAMP ATTACK WEST',
+            'EAST': '
 }
 
 current_node = world_map['ALLY BASE']
