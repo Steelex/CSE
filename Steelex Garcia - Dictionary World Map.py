@@ -64,10 +64,86 @@ world_map = {
         'DESCRIPTION': "You are at the west open field where you can fight but it is the outskirts of this place.",
         'PATHS': {
             'SOUTH': 'WEST ALLY SAFETY ZONE',
-            'NORTH': 'JUNGLE CAMPLE SPEED',
-            'WEST: ': ''
+            'NORTH': 'JUNGLE CAMPLE SPEED WEST',
+            'EAST': 'MIDDLE COMBAT FIELD'
         }
-    }
+    },
+    'EAST ALLY OPEN FIELD': {
+        'NAME': "East Ally Open Field",
+        'DESCRITPION': "You are at the east open field where you can fight but it is the outskirts of this place.",
+        'PATHS': {
+            'NW': 'MIDDLE COMBAT FIELD',
+            'SOUTH': 'RIGHT SAFETY ZONE',
+            'NORTH': 'JUNGLE CAMP SPEED EAST'
+        }
+    },
+    'JUNGLE CAMP MANA WEST': {
+        'NAME': "Jungle Camp Mana West",
+        'DESCRIPTION': "You are at the jungle camp where you can kill a monster for a timed mana regen boost.",
+        'PATHS': {
+            'NORTH': 'JUNGLE CAMP ATTACK WEST',
+            'SOUTH': 'WEST ALLY OPEN FIELD ',
+            'WEST': 'BEHIND THE CAMPS WEST',
+            'EAST': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'JUNGLE CAMP SPEED EAST': {
+        'NAME': "Jungle Camp Speed East",
+        'DESCRIPTION': "You are at the jungle camp where you can kill a monster for a timed speed boost.",
+        'PATHS': {
+            'NORTH': 'JUNGLE CAMP ATTACK EAST',
+            'SOUTH': 'EAST ALLY OPEN FIELD ',
+            'EAST': 'BEHIND THE CAMPS EAST',
+            'WEST': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'JUNGLE CAMP ATTACK WEST': {
+        'NAME': "Jungle Camp Attack West",
+        'DESCRIPTION': "You are at the jungle camp where you can kill a monser for a timed attack boost.",
+        'PATHS': {
+            'NORTH': 'JUNGLE CAMP SPEED WEST',
+            'SOUTH': 'JUNGLE CAMP MANA WEST',
+            'WEST': 'BEHIND THE CAMPS WEST',
+            'EAST': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'JUNGLE CAMP ATTACK EAST': {
+        'NAME': "Jungle Camp Attack East",
+        'DESCRIPTION': "You are at the jungle camp where you can kill a monser for a timed attack boost.",
+        'PATHS': {
+            'NORTH': 'JUNGLE CAMP SPEED EAST',
+            'SOUTH': 'JUNGLE CAMP MANA EAST',
+            'EAST': 'BEHIND THE CAMPS EAST',
+            'WEST': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'JUNGLE CAMP MANA EAST': {
+        'NAME': "Jungle Camp Mana East",
+        'DESCRIPTION': "You are at the jungle camp where you can kil a monster for a timed mana boost",
+        'PATHS': {
+            'NORTH': 'JUNGLE CAMP ATTACK EAST',
+            'SOUTH': 'EAST ALLY OPEN FIELD ',
+            'EAST': 'BEHIND THE CAMPS EAST',
+            'WEST': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'JUNGLE CAMP SPEED EAST': {
+        'NAME': "Jungle Camp Mana East",
+        'DESCRIPTION': "You are at the jungle camp where you can kil a monster for a timed speed boost",
+        'PATHS': {
+            'SOUTH': 'JUNGLE CAMP ATTACK EAST',
+            'NORTH': 'EAST ENEMY OPEN FIELD ',
+            'EAST': 'BEHIND THE CAMPS EAST',
+            'WEST': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'BEHIND CAMPS WEST': {
+        'NAME': "Behind Camps West",
+        'DESCRIPTION': "You are behind the jungle camps of the west.",
+        'PATHS': {
+            'NORTH': 'JUNGLE CAMP MANA WEST',
+            'SOUTH': 'JUNGLE CAMP SPEED WEST',
+            'EAST': 'JUNGLE
 }
 
 current_node = world_map['ALLY BASE']
