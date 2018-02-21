@@ -228,7 +228,7 @@ world_map = {
         }
     },
     'MIDDLE OF COMBAT FIELD': {
-        'NAME': "Combat field",
+        'NAME': "Combat Field",
         'DESCRIPTION': "You are at the combat field. The middle of the map. This is where you fight.",
         'PATHS': {
             'SW': 'ALLY OPEN FIELD WEST',
@@ -236,7 +236,9 @@ world_map = {
             'NE': 'ENEMY OPEN FIELD EAST',
             'NW': 'ENEMY OPEN FIELD WEST',
             'WEST': 'JUNGLE CAMP ATTACK WEST',
-            'EAST': '
+            'EAST': 'JUNGLE CAMP ATTACK EAST'
+        }
+    }
 }
 
 current_node = world_map['ALLY BASE']
