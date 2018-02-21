@@ -143,7 +143,88 @@ world_map = {
         'PATHS': {
             'NORTH': 'JUNGLE CAMP MANA WEST',
             'SOUTH': 'JUNGLE CAMP SPEED WEST',
-            'EAST': 'JUNGLE
+            'EAST': 'JUNGLE CAMP ATTACK WEST'
+        }
+    },
+    'BEHIND CAMPS EAST': {
+        'NAME': "Behind Camps East",
+        'DESCRIPTION': "You are behind the jungle camps of the east.",
+        'PATHS': {
+            'SOUTH': 'JUNGLE CAMP MANA EAST',
+            'NORTH': 'JUNGLE CAMP SPEED EAST',
+            'WEST': 'JUNGLE CAMP ATTACK EAST'
+        }
+    },
+        'ENEMY BASE': {
+        'NAME': "Enemy Base",
+        'DESCRIPTION': "You are at the ending point, Enemy Base",
+        'PATHS': {
+            'EAST': 'WEST ENEMY SAFETY ZONE',
+            'WEST': 'EAST ENEMY SAFETY ZONE',
+            'NORTH': 'ENEMY SHOP'
+        }
+    },
+    'WEST ENEMY SAFETY ZONE':{
+        'NAME': "West Enemy Safety Zone",
+        'DESCRIPTION': "You are at the safety zone for you and your team, West Enemy Safety Zone.",
+        'PATHS':{
+            'NORTH': 'ENEMY BASE',
+            'SOUTH': 'WEST ENEMY OPEN FIELD',
+            'SE': 'ENEMY PORTAL',
+            'EAST': 'ENEMY BASE'
+        }
+    },
+    'EAST ENEMY SAFETY ZONE':{
+        'NAME': "East Enemy Safety Zone",
+        'DESCRITPION': "You are at the safety zone for you and your team, East Enemy Safety Zone.",
+        'PATHS': {
+            'NORTH': 'ENEMY BASE',
+            'SOUTH': 'EAST ENEMY OPEN FIELD',
+            'WEST': 'ENEMY PORTAL',
+            'EAST': 'ENEMY BASE'
+        }
+    },
+    'ENEMY SHOP':{
+        'NAME': "Enemy Shop",
+        'DESCRIPTION': "You are at the shop for allies where you buy items.",
+        'PATHS': {
+            'SOUTH': 'ENEMY BASE'
+        }
+    },
+    'WEST ENEMY OPEN FIELD': {
+        'NAME': "West Enemy Open Field",
+        'DESCRIPTION': "You are at the west open field where you can fight but it is the outskirts of this place.",
+        'PATHS': {
+            'NORTH': 'WEST ENEMY SAFETY ZONE',
+            'SOUTH': 'JUNGLE CAMPLE SPEED WEST',
+            'WEST': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'EAST ENEMY OPEN FIELD': {
+        'NAME': "East Enemy Open Field",
+        'DESCRITPION': "You are at the east open field where you can fight but it is the outskirts of this place.",
+        'PATHS': {
+            'EAST': 'MIDDLE COMBAT FIELD',
+            'NORTH': 'RIGHT ENEMY SAFETY ZONE',
+            'SOUTH': 'JUNGLE CAMP SPEED EAST'
+        }
+    },
+    'ALLY PORTAL': {
+        'NAME': "Ally Portal",
+        'DESCRIPTION': "You are at your portal. Protect your portal by stopping minions from entering."
+        'PATHS': {
+            'EAST': 'RIGHT ALLY SAFETY ZONE',
+            'WEST': 'LEFT ALLY SAFETY ZONE',
+            'NORTH': 'MIDDLE COMBAT FIELD'
+        }
+    },
+    'ENEMY PORTAL': {
+        'NAME': "Enemy Portal",
+        'DESCRIPTION': "You are at the enemy portal. Clear a path for your minions to enter the portal.",
+        'Paths': {
+            'EAST': 'RIGHT ALLY SAFETY ZONE',
+            'WEST': 'LEFT ALLY SAFETY ZONE',
+            'NORTH': 'MIDDLE COMBAT FIELD'
 }
 
 current_node = world_map['ALLY BASE']
