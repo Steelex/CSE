@@ -190,7 +190,7 @@ print(string.digits)
 strTwo = "ThIs iS a VeRy Odd sEntence"
 lowercase = strTwo.lower()
 print(lowercase)
-'''
+
 
 # Dictionaries - Made up of Key: Value pairs
 dictionary = {'name': 'Lance', 'age': 23, 'height': 5 * 12 + 7}
@@ -270,4 +270,43 @@ current_node = largest_dictionary['CA']
 print(current_node)
 print(current_node['CA']['NAME'])
 print(current_node['CA']['POPULATION'])
+'''
 
+# Defining functions
+def hello_world():
+    print("Hello World!")
+
+
+hello_world()
+
+
+def square_it(number):
+    return number ** 2
+
+print("The number is %d" % square_it(3))
+
+
+def tip_calc(subtotal):
+    tax_amt = subtotal = 0.18 # tax cannot be used outside of the def.
+    return tax_amt
+
+
+def total_bill(bill_amt):
+    total = bill_amt + tip_calc(bill_amt)
+    print("Your total bill is %d" % total)
+
+total_bill(100)
+
+
+def distance(x1, y1, x2, y2):
+    inside = (x2 - x1) ** 2 + (y2 - y1) ** 2
+    answer = inside ** 0.5 #this is a square root
+    return answer
+
+
+print(distance(0, 0, 3, 4))
+
+def pythagorean(a, b):
+    a ** 2 + b **2
+
+pythagorean(5, 12)

@@ -32,17 +32,17 @@ world_map = {
             'SOUTH': 'ALLY SHOP'
         }
     },
-    'WEST ALLY SAFETY ZONE':{
+    'WEST ALLY SAFETY ZONE': {
         'NAME': "West Ally Safety Zone",
         'DESCRIPTION': "You are at the safety zone for you and your team, West Ally Safety Zone.",
-        'PATHS':{
+        'PATHS': {
             'SOUTH': 'ALLY BASE',
             'NORTH': 'WEST ALLY OPEN FIELD',
             'NE': 'ALLY PORTAL',
             'WEST': 'ALLY BASE'
         }
     },
-    'EAST ALLY SAFETY ZONE':{
+    'EAST ALLY SAFETY ZONE': {
         'NAME': "East Ally Safety Zone",
         'DESCRITPION': "You are at the safety zone for you and your team, East Ally Safety Zone.",
         'PATHS': {
@@ -52,7 +52,7 @@ world_map = {
             'WEST': 'ALLY BASE'
         }
     },
-    'ALLY SHOP':{
+    'ALLY SHOP': {
         'NAME': "Ally Shop",
         'DESCRIPTION': "You are at the shop for allies where you buy items.",
         'PATHS': {
@@ -127,7 +127,7 @@ world_map = {
             'WEST': 'MIDDLE COMBAT FIELD'
         }
     },
-    'JUNGLE CAMP SPEED EAST': {
+    'JUNGLE CAMP SPEED WEST': {
         'NAME': "Jungle Camp Mana East",
         'DESCRIPTION': "You are at the jungle camp where you can kil a monster for a timed speed boost",
         'PATHS': {
@@ -155,7 +155,7 @@ world_map = {
             'WEST': 'JUNGLE CAMP ATTACK EAST'
         }
     },
-        'ENEMY BASE': {
+    'ENEMY BASE': {
         'NAME': "Enemy Base",
         'DESCRIPTION': "You are at the ending point, Enemy Base",
         'PATHS': {
@@ -164,17 +164,17 @@ world_map = {
             'NORTH': 'ENEMY SHOP'
         }
     },
-    'WEST ENEMY SAFETY ZONE':{
+    'WEST ENEMY SAFETY ZONE': {
         'NAME': "West Enemy Safety Zone",
         'DESCRIPTION': "You are at the safety zone for you and your team, West Enemy Safety Zone.",
-        'PATHS':{
+        'PATHS': {
             'NORTH': 'ENEMY BASE',
             'SOUTH': 'WEST ENEMY OPEN FIELD',
             'SE': 'ENEMY PORTAL',
             'EAST': 'ENEMY BASE'
         }
     },
-    'EAST ENEMY SAFETY ZONE':{
+    'EAST ENEMY SAFETY ZONE': {
         'NAME': "East Enemy Safety Zone",
         'DESCRITPION': "You are at the safety zone for you and your team, East Enemy Safety Zone.",
         'PATHS': {
@@ -184,7 +184,7 @@ world_map = {
             'EAST': 'ENEMY BASE'
         }
     },
-    'ENEMY SHOP':{
+    'ENEMY SHOP': {
         'NAME': "Enemy Shop",
         'DESCRIPTION': "You are at the shop for allies where you buy items.",
         'PATHS': {
@@ -211,11 +211,11 @@ world_map = {
     },
     'ALLY PORTAL': {
         'NAME': "Ally Portal",
-        'DESCRIPTION': "You are at your portal. Protect your portal by stopping minions from entering."
+        'DESCRIPTION': "You are at your portal. Protect your portal by stopping minions from entering.",
         'PATHS': {
             'EAST': 'RIGHT ALLY SAFETY ZONE',
             'WEST': 'LEFT ALLY SAFETY ZONE',
-            'NORTH': 'MIDDLE COMBAT FIELD'
+    '       NORTH': 'MIDDLE COMBAT FIELD'
         }
     },
     'ENEMY PORTAL': {
@@ -228,10 +228,10 @@ world_map = {
         }
     },
     'MIDDLE OF COMBAT FIELD': {
-        'NAME': "Combat Field",
-        'DESCRIPTION': "You are at the combat field. The middle of the map. This is where you fight.",
-        'PATHS': {
-            'SW': 'ALLY OPEN FIELD WEST',
+    'NAME': "Combat Field",
+    'DESCRIPTION': "You are at the combat field. The middle of the map. This is where you fight.",
+    'PATHS': {
+        '    SW': 'ALLY OPEN FIELD WEST',
             'SE': 'ALLY OPEN FIELD EAST',
             'NE': 'ENEMY OPEN FIELD EAST',
             'NW': 'ENEMY OPEN FIELD WEST',
@@ -242,7 +242,7 @@ world_map = {
 }
 
 current_node = world_map['ALLY BASE']
-directions = [ 'NORTH', 'SOUTH', 'EAST', 'WEST', 'NW', 'NE', 'SW', 'SE']
+directions = ['NORTH', 'SOUTH', 'EAST', 'WEST', 'NW', 'NE', 'SW', 'SE']
 
 while True:
     print(current_node['NAME'])
@@ -258,5 +258,5 @@ while True:
     else:
         print('Command not Recognized')
 
-        
-        
+
+
