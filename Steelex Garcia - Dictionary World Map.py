@@ -64,7 +64,7 @@ world_map = {
         'DESCRIPTION': "You are at the west open field where you can fight but it is the outskirts of this place.",
         'PATHS': {
             'SOUTH': 'WEST ALLY SAFETY ZONE',
-            'NORTH': 'JUNGLE CAMPLE SPEED WEST',
+            'NORTH': 'JUNGLE CAMPLE MANA WEST',
             'EAST': 'MIDDLE COMBAT FIELD'
         }
     },

@@ -1,7 +1,7 @@
 # Defining a class
 class Shoes(object):
-    def __init__(self, lace_color, lighting, brand):     #  TWO underscores before and after
-        #  Things a shoe has
+    def __init__(self, lace_color, lighting, brand):  # TWO underscores before and after
+        # Things a shoe has
         self.lace_color = lace_color
         self.rgb_lighting = lighting
         self.used = False
@@ -17,8 +17,9 @@ class Shoes(object):
         self.clean = True
         print("You clean the shoes")
 
+
 first_pair = Shoes("Red", True, "Jordan")
-second_pair = ("Pink", False, "Sketchers")
+second_pair = Shoes("Pink", False, "Sketchers")
 
 print(first_pair.brand)
 print(second_pair.lace_color)
@@ -37,25 +38,16 @@ class Car(object):
         self.model = model
         self.hp = horsepower
         self.running = False
-        self.passengers = 0
 
-
-def drive_forward(self):
-    if self.running:
-        print("You move forward.")
-    else:
-        print("Nothing Happens.")
+    def drive_forward(self):
+        if self.running:
+            print("You move forward.")
+        else:
+            print("Nothing Happens.")
 
     def turn_on(self):
         if self.running:
-            print("nothing Happens")
+            print("Nothing Happens")
         else:
             self.running = True
             print("You start the car")
-    def turn_off():
-        if self.running
-            print("you turn the car off")
-        else:
-            print("nothing happens")
-
-    def go_for_drive

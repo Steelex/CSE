@@ -307,6 +307,8 @@ def distance(x1, y1, x2, y2):
 print(distance(0, 0, 3, 4))
 
 def pythagorean(a, b):
-    a ** 2 + b **2
+    s1 = (a ** 2 + b **2)
+    s2 = (s1 ** 0.5)
+    return s2
 
-pythagorean(5, 12)
+print (pythagorean(5, 12))
