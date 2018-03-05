@@ -99,7 +99,7 @@ world_map = {
     },
     'JUNGLE CAMP ATTACK WEST': {
         'NAME': "Jungle Camp Attack West",
-        'DESCRIPTION': "You are at the jungle camp where you can kill a monser for a timed attack boost.",
+        'DESCRIPTION': "You are at the jungle camp where you can kill a monster for a timed attack boost.",
         'PATHS': {
             'NORTH': 'JUNGLE CAMP SPEED WEST',
             'SOUTH': 'JUNGLE CAMP MANA WEST',
