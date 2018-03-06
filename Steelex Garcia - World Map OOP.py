@@ -32,4 +32,29 @@ jungle_camp_mana_west = Room("jungle camp mana west", "jungle camp attack west",
                              "middle combat field", "west ally open field", None, None, None, None)
 jungle_camp_speed_east = Room("jungle camp speed east", "middle combat field", "behind the east camps",
                               "east ally open field", None, None, None, None)
-jungle_campe_attack_west = Room()
+jungle_camp_attack_west = Room("jungle camp attack west", "jungle camp speed west", "behind the west camps",
+                               "middle combat field", "jungle camp mana west",None, None, None, None)
+jungle_camp_attack_east = Room("jungle camp attack east", "jungle camp speed east", "middle combat field",
+                               "behind the east camps", "jungle camp mana east", None, None, None, None)
+jungle_camp_mana_east = Room("jungle camp mana east", "jungle camp attack east", "middle combat field",
+                             "behind the east camps", "east ally open field", None, None, None, None)
+jungle_camp_speed_west = Room("jungle camp speed west", "east enemy open field", "middle combat field,",
+                              "behind the east camps", "jungle camp attack west", None, None, None, None)
+behind_the_camps_west = Room("behind the camps west", "jungle camp mana west", None, "jungle camp attack west",
+                             "jungle camp speed west", None, None, None, None)
+behind_the_camps_east = Room("behind the camps east", "jungle camp speed east", "jungle camp attack east",
+                             None, "jungle camp mana east", None, None, None, None)
+enemy_base = Room(" enemy base", "enemy shop", "east enemy safety zone", "west enemy safety zone", None, None, None,
+                None, None)
+west_enemy_safety_zone = Room("west enemy safety zone", "enemy base", None, "enemy base", "west enemy open field",
+                              "enemy portal", None, None, None)
+east_enemy_safety_zone = Room("east enemy safety zone", "enemy base", "enemy portal", "enemy base",
+                              "east enemy open field", None, None, None, None)
+enemy_shop = Room("enemy shop", None, None, None, "enemy base", None, None, None, None)
+west_enemy_open_field = Room("west enemy open field", "west enemy safety zone", "middle combat field", None,
+                             "jungle camp speed west", None, None, None, None)
+east_enemy_open_field = Room("east enemy open field", "right enemy safety zone", None, "middle combat field",
+                             "jungle camp speed east", None, None, None, None)
+ally_portal = Room("ally portal", "middle combat field", "left ally safety zone", "right ally safety zone", None, None,
+                   None, None, None)
+enemy_portal = Room("enemy portal", "")
