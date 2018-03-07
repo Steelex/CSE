@@ -119,7 +119,7 @@ world_map = {
     },
     'JUNGLE CAMP MANA EAST': {
         'NAME': "Jungle Camp Mana East",
-        'DESCRIPTION': "You are at the jungle camp where you can kil a monster for a timed mana boost",
+        'DESCRIPTION': "You are at the  east jungle camp where you can kil a monster for a timed mana boost",
         'PATHS': {
             'NORTH': 'JUNGLE CAMP ATTACK EAST',
             'SOUTH': 'EAST ALLY OPEN FIELD ',
@@ -129,7 +129,7 @@ world_map = {
     },
     'JUNGLE CAMP SPEED WEST': {
         'NAME': "Jungle Camp Mana East",
-        'DESCRIPTION': "You are at the jungle camp where you can kil a monster for a timed speed boost",
+        'DESCRIPTION': "You are at the west jungle camp where you can kil a monster for a timed speed boost",
         'PATHS': {
             'SOUTH': 'JUNGLE CAMP ATTACK EAST',
             'NORTH': 'EAST ENEMY OPEN FIELD ',
