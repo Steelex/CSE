@@ -38,6 +38,7 @@ class Car(object):
         self.model = model
         self.hp = horsepower
         self.running = False
+        self.passengers = 0
 
     def drive_forward(self):
         if self.running:
@@ -51,3 +52,25 @@ class Car(object):
         else:
             self.running = True
             print("You start the car")
+
+    def turn_off(self):
+        if self.running:
+            self.running = False
+            print("you turn the car off")
+        else:
+            print("Nothing happens")
+
+    def go_for_drive(self, passengers):
+        print("%d passengers get in" % passengers)
+        self.passengers = passengers
+        self.turn_on()
+        self.drive_forward()
+        self.drive_forward()
+        self.drive_forward()
+        self.turn_off()
+        print("%d passengers get out" % passengers)
+        self.passengers = 0
+
+
+my_car = Car("Red", "Tesla", "X", 9001)
+my_car.go_for_drive(4)
