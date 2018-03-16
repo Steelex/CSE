@@ -15,6 +15,22 @@ class Room(object):
         global current_node
         current_node = globals()[getattr(self, direction)]
 
+class Item(object):
+    def __init__(self, name, description):
+
+
+class Armor(Item):
+
+
+class Heavy_Armor(object):
+    def __init__(self, name, description):
+        super(Heavy_Armor, self).__init__(name, description)
+
+class Light_Armor(object):
+    def __init__(self, name, description):
+        super(Light_Armor, name, description)
+
+
 
 # Initialize Room
 ally_base = Room("ally base", None, "west ally safety zone", "east ally safety zone", "ally shop", None, None, None,
