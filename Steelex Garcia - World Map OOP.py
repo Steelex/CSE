@@ -15,20 +15,82 @@ class Room(object):
         global current_node
         current_node = globals()[getattr(self, direction)]
 
+
+class Character(object):
+    def __init__(self, name, description, health, move, attack, defense):
+        self.name = name
+        self.alive = True
+        self.description = description
+        self.attack = False
+        self.take_damage = False
+        self.health = health
+        self.movement = move
+        self.attack = attack
+        self.defense = defense
+
+    def interact(self):
+        print(self.name)
+        print(self.description)
+        print(self.health)
+
+    def hit(self):
+        self.take_damage = True
+        self.health = self.health - 1
+        print("You hit the enemy.")
+        print(self.health)
+        if self.health == 0:
+            print("The enemy dies.")
+            self.alive = False
+        elif self.health < 0:
+            print("Your enemy is dead.")
+        self.take_damage = False
+
+    def take_hit(self):
+        self.take_damage = True
+        self.health = self.health - 1
+        print("You take damage.")
+        if self.health == 0:
+            print("You have died. GAME OVER.")
+            quit()
+
+    def move(self):
+        self.movement = True
+        print("The enemy moves!")
+        self.movement = False
+
+    def status(self):
+        print("%s/5 health left" % self.health)
+
+
 class Item(object):
     def __init__(self, name, description):
+        self.name = name
+        self.description = description
 
+
+class Weapon(Item):
+    def __init__(self, name, description, damage, ability, attack_type):
+        super(Weapon, self).__init__(name, description)
+        self.damage = damage
+        self.ability = ability
+        self.attack_type = attack_type
 
 class Armor(Item):
+    def __init__(self, name, ability, defense_type):
+        self.name = name
+        self.ability = ability
+        self.defense_type = defense_type
 
 
-class Heavy_Armor(object):
+class Heavy_Armor(Item):
+    def __init__(self, name, defense, description):
+        super(Heavy_Armor, self).__init__(name, defense, description)
+        self.defense_type = defense
+
+class Light_Armor(Item):
     def __init__(self, name, description):
-        super(Heavy_Armor, self).__init__(name, description)
+        super(Light_Armor, self).__init__(name, description)
 
-class Light_Armor(object):
-    def __init__(self, name, description):
-        super(Light_Armor, name, description)
 
 
 
