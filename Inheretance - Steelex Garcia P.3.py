@@ -1,3 +1,4 @@
+""""
 class Vehicle(object):
     def __init__(self, seats, engine_type, turning_mechanism):
         self.seats = seats
@@ -45,3 +46,5 @@ class Person(object):
 
     def work(self):
         print("%s goes to work" % self.name)
+"""""
+
