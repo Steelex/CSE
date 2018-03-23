@@ -69,17 +69,15 @@ class Item(object):
 
 
 class Weapon(Item):
-    def __init__(self, name, description, damage, ability, attack_type, hp, speed):
+    def __init__(self, name, description, damage, ability, attack_type):
         super(Weapon, self).__init__(name, description)
         self.damage = damage
         self.ability = ability
         self.attack_type = attack_type
-        self.speed = speed
-        self.hp = hp
 
 
 class Armor(Item):
-    def __init__(self, name, ability, defense_type, description, hp):
+    def __init__(self, name, description, ability, defense_type, hp):
         super(Armor, self).__init__(name, description)
         self.ability = ability
         self.defense_type = defense_type
@@ -88,30 +86,30 @@ class Armor(Item):
 
 class Heavy_Armor(Armor):
     def __init__(self, name, hp, defense_type, ability, description):
-        super(Heavy_Armor, self).__init__(name, description)
+        super(Heavy_Armor, self).__init__(name, description, ability, defense_type, hp)
         self.hp = hp
         self.defense_type = defense_type
         self.ability = ability
 
 class Light_Armor(Armor):
-    def __init__(self, name, hp, speed, defense, ability, description):
-        super(Light_Armor, self).__init__(name, description)
+    def __init__(self, name, hp, speed, defense_type, ability, description):
+        super(Light_Armor, self).__init__(name, description, ability, defense_type, hp)
         self.hp = hp
         self.speed = speed
-        self.defense = defense
+        self.defense_type = defense_type
         self.ability = ability
 
 
 class Dangerous_Armblades(Weapon):
     def __init__(self, name, damage, ability, attack_type, description):
-        super(Dangerous_Armblades, self).__init__(name, description)
+        super(Dangerous_Armblades, self).__init__(name, description, damage, ability, attack_type)
         self.damage = damage
         self.ability = ability
         self.attack_type = attack_type
 
 class Health_Hammer(Weapon):
     def __init__(self, name, damage, ability, hp, attack_type, description):
-        super(Health_Hammer,self).__init__(name, description)
+        super(Health_Hammer,self).__init__(name, description, damage, ability, attack_type)
         self.damage = damage
         self.hp = hp
         self.ability = ability
@@ -119,7 +117,7 @@ class Health_Hammer(Weapon):
 
 class Speed_Rapier(Weapon):
     def __init__(self, name, damage, ability, speed, attack_type, description):
-        super(Speed_Rapier, self).__init__(name, description)
+        super(Speed_Rapier, self).__init__(name, description, damage, ability, attack_type)
         self.damage = damage
         self.ability = ability
         self.speed = speed
@@ -135,6 +133,7 @@ class Consumable(Item):
             self.amount = self.amount + 1
             print("You have obtained a %s" % self.name)
 
+
 class Lesser_Health_Potion(Consumable):
     def __init__(self):
         super(Lesser_Health_Potion, self).__init__("Weaker Healing Potion", "A potion the will restore 3 HP.")
@@ -145,6 +144,7 @@ class Lesser_Health_Potion(Consumable):
         self.amount = self.amount - 1
         print("You have used a lesser health potion.")
         self.use = False
+
 
 class Health_Potion(Consumable):
     def __init__(self):
@@ -206,31 +206,28 @@ class Lesser_Mana_Potion(Consumable):
 
 
 class Relic(Item):
-    def __init__(self, name, description, ability, damage, health, speed):
+    def __init__(self, name, description, ability):
         super(Relic, self).__init__(name, description)
         self.ability = ability
-        self.damage = damage
-        self.speed = speed
-        self.health = health
 
 
 class Offense_Booster(Relic):
     def __init__(self, name, description, ability, damage):
-        super(Offense_Booster, self).__init__(name, description)
+        super(Offense_Booster, self).__init__(name, description, ability)
         self.ability = ability
         self.damage = damage
 
 
 class Health_Booster(Relic):
     def __init__(self, name, description, hp, ability):
-        super(Health_Booster, self).__init__(name, description)
+        super(Health_Booster, self).__init__(name, description, ability)
         self.ability = ability
         self.hp = hp
 
 
 class Speed_Booster(Relic):
     def __init__(self, name, description, ability, speed):
-        super(Speed_Booster, self).__init__(name, description)
+        super(Speed_Booster, self).__init__(name, description, ability)
         self.ability = ability
         self.speed = speed
 
