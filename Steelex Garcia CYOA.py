@@ -17,16 +17,18 @@ class Room(object):
 
 
 class Character(object):
-    def __init__(self, name, description, health, move, attack, defense):
+    def __init__(self, name, health, description, attack, money, inventory):
         self.name = name
-        self.alive = True
-        self.description = description
-        self.attack = False
-        self.take_damage = False
         self.health = health
-        self.movement = move
+        self.description = description
         self.attack = attack
-        self.defense = defense
+        self.death = False
+        self.money = money
+        self.inventory = inventory
+        self.alive = True
+
+    def take_damage(self, amount):
+        self.health -= amount
 
     def interact(self):
         print(self.name)
@@ -45,14 +47,6 @@ class Character(object):
             print("Your enemy is dead.")
         self.take_damage = False
 
-    def take_hit(self):
-        self.take_damage = True
-        self.health = self.health - 1
-        print("You take damage.")
-        if self.health == 0:
-            print("You have died. GAME OVER.")
-            quit()
-
     def move(self):
         self.movement = True
         print("The enemy moves!")
@@ -63,80 +57,124 @@ class Character(object):
 
 
 class Item(object):
-    def __init__(self, name, description):
+    def __init__(self, name, money):
         self.name = name
-        self.description = description
+        self.money = money
+
+    def sell(self):
+        if self.name in your_inv:
+            print("You sell the %s for %s gold" % (self.name, self.money))
+            you.money += self.money
+            your_inv.remove(self.name)
+        else:
+            print("You don't have a %s" % self.name)
+
+    # BUY
+    def buy(self):
+        if you.money >= self.money:
+            print("You buy a %s." % self.name)
+            you.money -= self.money
+            your_inv.append(self)
+        elif you.money < self.money:
+            print("You don't have enough money.")
 
 
 class Weapon(Item):
-    def __init__(self, name, description, damage, ability, attack_type):
-        super(Weapon, self).__init__(name, description)
+    def __init__(self, name, money, damage, lifesteal, description):
+        super(Weapon, self).__init__(name, money)
         self.damage = damage
-        self.ability = ability
-        self.attack_type = attack_type
+        self.lifesteal = lifesteal
+        self.description = description
+
+    # BUY
+    def buy(self):
+        if you.money >= self.money:
+            print("You buy a %s." % self.name)
+            you.money -= self.money
+            your_inv.append(self)
+        elif you.money < self.money:
+            print("You don't have enough money.")
+
+
+class Consumable(Item):
+    def __init__(self, heal, name, money):
+        super(Consumable, self).__init__(name, money)
+        self.heal = heal
+
+    def use(self):
+        if HealthPotion or RegularManaPotion in your_inv:
+            print("You drink a %s" % self.name)
+            self.heal += you.health
+        else:
+            print("You don't have any consumables.")
+
+    # BUY
+    def buy(self):
+        if you.money >= self.money:
+            print("You buy a %s." % self.name)
+            you.money -= self.money
+            your_inv.append(self)
+        elif you.money < self.money:
+            print("You don't have enough money.")
 
 
 class Armor(Item):
-    def __init__(self, name, description, ability, defense_type, hp):
-        super(Armor, self).__init__(name, description)
-        self.ability = ability
-        self.defense_type = defense_type
-        self.hp = hp
+    def __init__(self, name, health, money):
+        super(Armor, self).__init__(name, money)
+        self.health = health
+
+    # BUY
+    def buy(self):
+        if you.money >= self.money:
+            print("You buy a %s." % self.name)
+            you.money -= self.money
+            your_inv.append(self)
+        elif you.money < self.money:
+            print("You don't have enough money.")
 
 
-class Heavy_Armor(Armor):
-    def __init__(self, name, hp, defense_type, ability, description):
-        super(Heavy_Armor, self).__init__(name, description, ability, defense_type, hp)
-        self.hp = hp
-        self.defense_type = defense_type
-        self.ability = ability
+class HeavyArmor(Armor):
+    def __init__(self, name, health, money, defense):
+        super(HeavyArmor, self).__init__(name, health, money)
+        self.defense = defense
 
-class Light_Armor(Armor):
-    def __init__(self, name, hp, speed, defense_type, ability, description):
-        super(Light_Armor, self).__init__(name, description, ability, defense_type, hp)
-        self.hp = hp
+
+class LightArmor(Armor):
+    def __init__(self, name, health, money, defense, speed):
+        super(LightArmor, self).__init__(name, health, money)
+        self.defense = defense
         self.speed = speed
-        self.defense_type = defense_type
-        self.ability = ability
 
 
-class Dangerous_Armblades(Weapon):
+class DangerousArmblades(Weapon):
     def __init__(self, name, damage, ability, attack_type, description):
-        super(Dangerous_Armblades, self).__init__(name, description, damage, ability, attack_type)
+        super(DangerousArmblades, self).__init__(name, description, damage, ability, attack_type)
         self.damage = damage
         self.ability = ability
         self.attack_type = attack_type
 
-class Health_Hammer(Weapon):
+
+class HealthHammer(Weapon):
     def __init__(self, name, damage, ability, hp, attack_type, description):
-        super(Health_Hammer,self).__init__(name, description, damage, ability, attack_type)
+        super(HealthHammer, self).__init__(name, description, damage, ability, attack_type)
         self.damage = damage
         self.hp = hp
         self.ability = ability
         self.attack_type = attack_type
 
-class Speed_Rapier(Weapon):
+
+class SpeedRapier(Weapon):
     def __init__(self, name, damage, ability, speed, attack_type, description):
-        super(Speed_Rapier, self).__init__(name, description, damage, ability, attack_type)
+        super(SpeedRapier, self).__init__(name, description, damage, ability, attack_type)
         self.damage = damage
         self.ability = ability
         self.speed = speed
         self.attack_type = attack_type
 
-class Consumable(Item):
-    def __init__(self, name, description):
-            super(Consumable, self).__init__(name, description)
-            self.use = False
-            self.amount = 0
 
-    def obtain(self):
-            self.amount = self.amount + 1
-            print("You have obtained a %s" % self.name)
-
-
-class Lesser_Health_Potion(Consumable):
+class LesserHealthPotion(Consumable):
     def __init__(self):
-        super(Lesser_Health_Potion, self).__init__("Weaker Healing Potion", "A potion the will restore 3 HP.")
+            super(LesserHealthPotion, self).__init__("Weaker Healing Potion", "A potion the will restore 3 HP.")
 
     def use(self):
         self.use = True
@@ -146,9 +184,9 @@ class Lesser_Health_Potion(Consumable):
         self.use = False
 
 
-class Health_Potion(Consumable):
+class HealthPotion(Consumable):
     def __init__(self):
-            super(Health_Potion, self).__init__("Regular Healing Potion", "A potion the will restore 5 HP.")
+            super(HealthPotion, self).__init__("Regular Healing Potion", "A potion the will restore 5 HP.")
 
     def use(self):
         self.use = True
@@ -157,9 +195,9 @@ class Health_Potion(Consumable):
         print("You have used a regular health potion.")
         self.use = False
 
-class Greater_Health_Potion(Consumable):
+class GreaterHealthPotion(Consumable):
     def __init__(self):
-        super(Greater_Health_Potion, self).__init__("Greater Healing Potion", "A potion the will restore 10 HP.")
+        super(GreaterHealthPotion, self).__init__("Greater Healing Potion", "A potion the will restore 10 HP.")
 
     def use(self):
         self.use = True
@@ -169,9 +207,9 @@ class Greater_Health_Potion(Consumable):
         self.use = False
 
 
-class Greater_Mana_Potion(Consumable):
+class GreaterManaPotion(Consumable):
     def __init__(self):
-        super(Greater_Mana_Potion, self).__init__("Greater Mana Potion", "A potion the will restore 10 Mana.")
+        super(GreaterManaPotion, self).__init__("Greater Mana Potion", "A potion the will restore 10 Mana.")
 
     def use(self):
         self.use = True
@@ -181,9 +219,9 @@ class Greater_Mana_Potion(Consumable):
         self.use = False
 
 
-class Regular_Mana_Potion(Consumable):
+class RegularManaPotion(Consumable):
     def __init__(self):
-        super(Regular_Mana_Potion, self).__init__("Regualr Mana Potion", "A potion the will restore 5 Mana.")
+        super(RegularManaPotion, self).__init__("Regualr Mana Potion", "A potion the will restore 5 Mana.")
 
     def use(self):
         self.use = True
@@ -193,9 +231,9 @@ class Regular_Mana_Potion(Consumable):
         self.use = False
 
 
-class Lesser_Mana_Potion(Consumable):
+class LesserManaPotion(Consumable):
     def __init__(self):
-        super(Lesser_Mana_Potion, self).__init__("Lesser Mana Potion", "A potion the will restore 3 Mana.")
+        super(LesserManaPotion, self).__init__("Lesser Mana Potion", "A potion the will restore 3 Mana.")
 
     def use(self):
         self.use = True
@@ -211,26 +249,31 @@ class Relic(Item):
         self.ability = ability
 
 
-class Offense_Booster(Relic):
+class OffenseBooster(Relic):
     def __init__(self, name, description, ability, damage):
-        super(Offense_Booster, self).__init__(name, description, ability)
+        super(OffenseBooster, self).__init__(name, description, ability)
         self.ability = ability
         self.damage = damage
 
 
-class Health_Booster(Relic):
+class HealthBooster(Relic):
     def __init__(self, name, description, hp, ability):
-        super(Health_Booster, self).__init__(name, description, ability)
+        super(HealthBooster, self).__init__(name, description, ability)
         self.ability = ability
         self.hp = hp
 
 
-class Speed_Booster(Relic):
+class SpeedBooster(Relic):
     def __init__(self, name, description, ability, speed):
-        super(Speed_Booster, self).__init__(name, description, ability)
+        super(SpeedBooster, self).__init__(name, description, ability)
         self.ability = ability
         self.speed = speed
 
+
+your_inv = []
+max_hp = 100
+max_inv = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+you = Character("Curious Man", 100, "man in wonder", 10, 0, your_inv)
 
 
 # Initialize Room
