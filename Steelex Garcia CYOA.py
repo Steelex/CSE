@@ -1,6 +1,8 @@
 import random
+
+
 class Room(object):
-    def __init__(self, name, north, west, east, south, se, sw, ne, nw, description, enemy_in):
+    def __init__(self, name, north, west, east, south, se, sw, ne, nw, description, enemy):
         self.name = name
         self.north = north
         self.west = west
@@ -11,11 +13,12 @@ class Room(object):
         self.northeast = ne
         self.northwest = nw
         self.description = description
-        self.enemy_in = enemy_in
+        self.enemy = enemy
 
     def move(self, direction):
         global current_node
         current_node = globals()[getattr(self, direction)]
+
 
 class Character(object):
     def __init__(self, name, health, mana, description, attack, money, inventory):
@@ -59,9 +62,10 @@ class Character(object):
 
 
 class Item(object):
-    def __init__(self, name, money):
+    def __init__(self, name, money, attack):
         self.name = name
         self.money = money
+        self.attack = attack
 
     def sell(self):
         if self.name in your_inv:
@@ -80,11 +84,30 @@ class Item(object):
         elif you.money < self.money:
             print("You don't have enough money.")
 
+    def hit(self, target):
+        target.take_damage(self)
+        print('%s attacks %s for %s' % (self.name, target.name, self.attack))
+        if you.health <= 0:
+            print('You died.')
+            exit(0)
+        if target.health <= 0:
+            print('%s died.' % target.name)
+            print('You received %s gold.' % target.money)
+            print('HP: %s' % you.health)
+            self.money += target.money
+            if target.health < 0:
+                target.health = 0
+            # Loot
+            choice = random.randint(1, 20)
+            loot = random.randint(1, 20)
+            if choice == loot:
+                your_inv.append(target.inventory)
+
 
 class Weapon(Item):
-    def __init__(self, name, money, damage, speed, health, description):
-        super(Weapon, self).__init__(name, money)
-        self.damage = damage
+    def __init__(self, name, money, attack, speed, health, description):
+        super(Weapon, self).__init__(name, money, attack)
+        self.attack = attack
         self.description = description
         self.speed = speed
         self.health = health
@@ -101,34 +124,32 @@ class Weapon(Item):
 
 class Consumable(Item):
     def __init__(self, heal, mana, name, description, money):
-        super(Consumable, self).__init__(name, money)
+        super(Consumable, self).__init__(name, money, None)
         self.heal = heal
         self.mana = mana
         self.description = description
 
-    def use(self):
-        if HealthPotion or RegularManaPotion in your_inv:
+    def heal(self):
+        if HealthPotion or LesserHealthPotion or GreaterHealthPotion in your_inv:
             print("You drink a %s" % self.name)
             self.heal += you.health
         else:
-            print("You don't have any consumables.")
+            print("You don't have any health potions.")
 
-    # BUY
     def buy(self):
         if you.money >= self.money:
             print("You buy a %s." % self.name)
             you.money -= self.money
             your_inv.append(self)
         elif you.money < self.money:
-            print("You don't have enough money.")
+            print("You're broke. Get some more money")
 
 
 class Armor(Item):
     def __init__(self, name, health, money):
-        super(Armor, self).__init__(name, money)
+        super(Armor, self).__init__(name, money, None)
         self.health = health
 
-    # BUY
     def buy(self):
         if you.money >= self.money:
             print("You buy a %s." % self.name)
@@ -152,11 +173,11 @@ class LightArmor(Armor):
 
 
 class DangerousArmblades(Weapon):
-    def __init__(self, name, damage, ability, attack_type, description, money):
-        super(DangerousArmblades, self).__init__(name, description, damage, ability, attack_type, money)
+    def __init__(self, name, damage, ability, attack, description, money):
+        super(DangerousArmblades, self).__init__(name, description, damage, ability, attack, money)
         self.damage = damage
         self.ability = ability
-        self.attack_type = attack_type
+        self.attack = attack
 
 
 class HealthHammer(Weapon):
@@ -178,9 +199,10 @@ class SpeedRapier(Weapon):
 
 
 class LesserHealthPotion(Consumable):
-    def __init__(self):
-            super(LesserHealthPotion, self).__init__("3", "0", "Weaker Healing Potion",
+    def __init__(self, heal):
+         super(LesserHealthPotion, self).__init__("3", "0", "Weaker Healing Potion",
                                                      "A potion the will restore 3 HP.", "50")
+         self.heal = heal
 
     def use(self):
         self.use = True
@@ -255,7 +277,7 @@ class LesserManaPotion(Consumable):
 
 class Relic(Item):
     def __init__(self, name, description, ability):
-        super(Relic, self).__init__(name, description)
+        super(Relic, self).__init__(name, description, None)
         self.ability = ability
 
 
@@ -279,25 +301,29 @@ class SpeedBooster(Relic):
         self.ability = ability
         self.attack_speed = attack_speed
 
+HeavyArmor = HeavyArmor("HeavyArmor", 800, 2350, "Armor for people that tank damage. It's big, heavy, and sturdy.")
+LightArmor = LightArmor("LightArmor", 500, 2200, "Armor for people that move alot. Its light and strong.")
+
+
 
 your_inv = []
-max_hp = 100
+max_health = 100
 max_mana = 100
-max_inv = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+max_inventory = [1, 2, 3, 4, 5, 6, 7]
 you = Character("Curious Man", 100, 100, "man in wonder", 10, 0, your_inv)
 
 
 def fight(self, enemy):
     try:
-        if enemy == current_node.enemy_in:
+        if enemy == current_node.enemy:
             print(you.name + ",", you.description, "starts fighting with %s" % enemy.name + ",", enemy.description)
             enemy.health = enemy.orig_hp
             while enemy.health != 0:
                 choice = random.choice([enemy, self])
                 if choice == self:
                     enemy.hit(self)
-                    if you.health > max_hp:
-                        you.health = max_hp
+                    if you.health > max_health:
+                        you.health = max_health
                 elif choice == enemy:
                     self.hit(enemy)
             print()
@@ -320,20 +346,20 @@ west_ally_open_field = Room("west_ally_open_field", "jungle_camp_speed_west", No
                             "west_ally_safety_zone", None, None, None, None,
                             "You are at the west open field where you can fight but it is the outskirts of this place."
                             , None)
-east_ally_open_field = Room("east_ally_open_field", "jungle_camp_speed_east", None, None, "east_safety_zone", None,
-                            None, None, "middle_combat_field",
+east_ally_open_field = Room("east_ally_open_field", "jungle_camp_speed_east", "middle_combat_field", None,
+                            "east_safety_zone", None, None, None, "middle_combat_field",
                             "You are at the east open field where you can fight but it is the outskirts of this place.",
                             None)
 jungle_camp_mana_west = Room("jungle_camp_mana_west", "jungle_camp_attack_west", "behind_the_west_camps",
                              "middle_combat_field", "west_ally_open field", None, None, None, None,
                              "You are at the jungle camp where you can kill a monster for a timed mana regen boost.",
                              "West Mana Sentinal")
-jungle_camp_speed_east = Room("jungle_camp_speed_east", "middle_combat_field", "behind_the_east_camps",
-                              "east_ally_open_field", None, None, None, None, None,
+jungle_camp_speed_east = Room("jungle_camp_speed_east", "east_enemy_open_field", "behind_the_east_camps",
+                              None, "jungle_camp_attack_east", None, None, None, None,
                               "You are at the jungle camp where you can kill a monster for a timed speed boost.",
                               "Speed Raptor")
-jungle_camp_attack_west = Room("jungle_camp_attack_west", "jungle_camp_speed_west", "behind_the_west_camps",
-                               "middle_combat_field", "jungle_camp_mana_west", None, None, None, None,
+jungle_camp_attack_west = Room("jungle_camp_attack_west", "jungle_camp_mana_west", "behind_the_west_camps",
+                               "middle_combat_field", "jungle_camp_speed_west", None, None, None, None,
                                "You are at the jungle camp where you can kill a monster for a timed attack boost.",
                                "Attack Ogre")
 jungle_camp_attack_east = Room("jungle_camp_attack_east", "jungle_camp_speed_east", "middle_combat_field",
@@ -344,7 +370,7 @@ jungle_camp_mana_east = Room("jungle_camp_mana_east", "jungle_camp_attack_east",
                              "behind_the_east_camps", "east_ally_open_field", None, None, None, None,
                              "You are at the jungle camp where you can kil a monster for a timed mana boost",
                              "Mana Sentinal")
-jungle_camp_speed_west = Room("jungle_camp_speed_west", "east_enemy_open_field", "middle_combat_field,",
+jungle_camp_speed_west = Room("jungle_camp_speed_west", "west_enemy_open_field", "middle_combat_field,",
                               "behind_the_east_camps", "jungle_camp_attack_west", None, None, None, None,
                               "You are at the west jungle camp where you can kil a monster for a timed speed boost",
                               "Speed Raptor")
@@ -375,9 +401,9 @@ east_enemy_open_field = Room("east_enemy_open_field", "right_enemy_safety_zone",
 ally_portal = Room("ally_portal", "middle_combat_field", "left_ally_safety_zone", "right_ally_safety_zone", None, None,
                    None, None, None, "You are at your portal. Protect your portal by stopping minions from entering.",
                    None)
-enemy_portal = Room("enemy_portal", None, "Right_enemy_safety_zone", "left_enemy_safety_zone", "middle_combat_field",
-                    None, None, None, None, "You are at the enemy portal. Clear a path for your minions to enter the "
-                                            "portal.", "Enemy Minions")
+enemy_portal = Room("enemy_portal", "ally_base", "ally_base", "ally_base", "ally_base", "ally_base", "ally_base",
+                    "ally_base", "ally_base", "You entered the enemy portal. You will be teleported back to base for "
+                                              "safety", "Enemy Minions")
 middle_of_combat_field = Room("middle_combat_field", None, "jungle_camp_attack_west", "jungle_camp_attack_east", None,
                               "ally_open_field_east", "ally_open_field_west", "enemy_open_field_east",
                               "enemy_open_field_west", "You are at the combat field. The middle of the map. This is "
@@ -428,8 +454,50 @@ while True:
         print(you.money)
 
     if command == 'help':
-        print("Type 'southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast', 'se', 'nw', "
-              "'s', 'w', 'e', 'n', 'sw', 'ne' to move.")
+        print("Type 'southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast', 'se', 'nw',"
+              " 's', 'w', 'e', 'n', 'sw', 'ne' to move.")
+
+
+    if command == 'buy':
+        armor_shop = [HeavyArmor, LightArmor]
+        weapon_shop = [DangerousArmblades, SpeedRapier, HealthHammer]
+        shop = [HeavyArmor, LightArmor, DangerousArmblades, SpeedRapier, HealthHammer, SpeedBooster, OffenseBooster,
+                HealthBooster, LesserHealthPotion, LesserManaPotion, HealthPotion, GreaterHealthPotion,
+                GreaterManaPotion, RegularManaPotion]
+
+        if current_node == ally_shop:
+
+            print("---SHOP---"
+                  "\n_________________________________________________________________________________"
+                  "\nHeavyArmor(0) DangerousArmblades(1) OffenseBooster(2) HealthBooster(3)\n"
+                  "\n"
+                  "\n_______________________________________"
+                  "__________________________________________\n" % ([HeavyArmor.health, LightArmor.health,
+                                                                     DangerousArmblades.attack, SpeedRapier.attack,
+                                                                     HealthHammer.attack, SpeedBooster.speed,
+                                                                     OffenseBooster.attack, HealthBooster.health,
+                                                                     LesserHealthPotion.heal, LesserManaPotion.manaheal,
+                                                                     HealthPotion.heal, GreaterHealthPotion.heal,
+                                                                     GreaterManaPotion.manaheal,
+                                                                     RegularManaPotion.manaheal])
+
+            item_buying = input("What do you want to buy? (Type in the number)\nYOUR MONEY: %s\n>_" % you.money)
+            try:
+                item_buy = shop[int(item_buying)]
+                if you.money < item_buy.money:
+                    print("You're poor. Go farm some more fo moneys.")
+                if you.money >= item_buy.money:
+                    print("You buy a %s. %s" % (item_buy.name, item_buy.description))
+                    your_inv.append(item_buy)
+                    you.money -= item_buy.money
+                    if item_buy in armor_shop:
+                        max_health += item_buy.health
+                print("That is not an item.")
+            except IndexError:
+                print("That is not an item.")
+
+        elif current_node != ally_shop:
+            print('You are not in the shop.')
 
     if command == 'inv':
         for i in your_inv:
@@ -438,19 +506,19 @@ while True:
             print([])
 
     if command == 'fight':
-        you.fight(current_node.enemy_in)
+        you.attack(current_node.enemy)
 
     if command == 'heal':
+        if HealthPotion not in your_inv:
+            print("You don\'t have a health potion.")
         if HealthPotion in your_inv:
-            if you.health == max_hp:
+            if you.health == max_health:
                 print("You are already full hp.")
-            if you.health < max_hp:
+            if you.health < max_health:
                 print("You drink a health potion.")
                 you.health += HealthPotion.heal
-                if you.health > max_hp:
-                    you.health = max_hp
+                if you.health > max_health:
+                    you.health = max_health
             print('HP: %s' % you.health)
         else:
             "You don\'t have a health potion."
-        if HealthPotion not in your_inv:
-            print("You don\'t have a health potion.")
