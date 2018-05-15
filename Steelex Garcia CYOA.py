@@ -105,12 +105,11 @@ class Item(object):
 
 
 class Weapon(Item):
-    def __init__(self, name, money, attack, speed, health, description):
+    def __init__(self, name, money, attack, description):
         super(Weapon, self).__init__(name, money, attack)
         self.attack = attack
         self.description = description
-        self.speed = speed
-        self.health = health
+
 
     # BUY
     def buy(self):
@@ -123,10 +122,8 @@ class Weapon(Item):
 
 
 class Consumable(Item):
-    def __init__(self, heal, mana, name, description, money):
+    def __init__(self, name, description, money):
         super(Consumable, self).__init__(name, money, None)
-        self.heal = heal
-        self.mana = mana
         self.description = description
 
     def heal(self):
@@ -146,9 +143,10 @@ class Consumable(Item):
 
 
 class Armor(Item):
-    def __init__(self, name, health, money):
-        super(Armor, self).__init__(name, money, None)
+    def __init__(self, name, health, money, description):
+        super(Armor, self).__init__(name, health, money)
         self.health = health
+        self.description = description
 
     def buy(self):
         if you.money >= self.money:
@@ -160,151 +158,93 @@ class Armor(Item):
 
 
 class HeavyArmor(Armor):
-    def __init__(self, name, health, money, defense):
-        super(HeavyArmor, self).__init__(name, health, money)
-        self.defense = defense
+    def __init__(self, name, health, money, description):
+        super(HeavyArmor, self).__init__(name, health, money, description)
+        self.description = description
 
 
 class LightArmor(Armor):
-    def __init__(self, name, health, money, defense, speed):
-        super(LightArmor, self).__init__(name, health, money)
-        self.defense = defense
+    def __init__(self, name, health, money, description, speed):
+        super(LightArmor, self).__init__(name, health, money, description)
         self.speed = speed
+        self.description = description
 
 
 class DangerousArmblades(Weapon):
-    def __init__(self, name, damage, ability, attack, description, money):
-        super(DangerousArmblades, self).__init__(name, description, damage, ability, attack, money)
-        self.damage = damage
-        self.ability = ability
+    def __init__(self,name, money, attack, description):
+        super(DangerousArmblades, self).__init__(name, money, attack, description)
         self.attack = attack
+        self.description = description
 
 
 class HealthHammer(Weapon):
-    def __init__(self, name, damage, ability, hp, attack_type, description, money):
-        super(HealthHammer, self).__init__(name, description, damage, ability, attack_type, money)
-        self.damage = damage
-        self.hp = hp
-        self.ability = ability
-        self.attack_type = attack_type
+    def __init__(self, name, money, attack, description, health):
+        super(HealthHammer, self).__init__(name, money, attack, description)
+        self.health = health
+        self.attack = attack
 
 
 class SpeedRapier(Weapon):
-    def __init__(self, name, damage, ability, speed, attack_type, description, money):
-        super(SpeedRapier, self).__init__(name, description, damage, ability, attack_type, money)
-        self.damage = damage
-        self.ability = ability
+    def __init__(self, name, money, attack, description, speed):
+        super(SpeedRapier, self).__init__(name, money, attack, description)
         self.speed = speed
-        self.attack_type = attack_type
-
-
-class LesserHealthPotion(Consumable):
-    def __init__(self, heal):
-         super(LesserHealthPotion, self).__init__("3", "0", "Weaker Healing Potion",
-                                                     "A potion the will restore 3 HP.", "50")
-         self.heal = heal
-
-    def use(self):
-        self.use = True
-        self.health = self.health + 3
-        self.amount = self.amount - 1
-        print("You have used a lesser health potion.")
-        self.use = False
+        self.attack = attack
 
 
 class HealthPotion(Consumable):
-    def __init__(self):
-            super(HealthPotion, self).__init__("5", "0", "Regular Healing Potion", "A potion the will restore 5 HP.",
-                                               "100")
+    def __init__(self, name, description, money, heal):
+        super(HealthPotion, self).__init__(name, description, money)
+        self.heal = heal
 
-    def use(self):
-        self.use = True
-        self.health = self.health + 5
-        self.amount = self.amount - 1
-        print("You have used a regular health potion.")
-        self.use = False
 
 class GreaterHealthPotion(Consumable):
-    def __init__(self):
-        super(GreaterHealthPotion, self).__init__("10", "0", "Greater Healing Potion",
-                                                  "A potion the will restore 10 HP.", "150")
+    def __init__(self, name, description, money, heal):
+        super(GreaterHealthPotion, self).__init__(name, description, money)
+        self.heal = heal
 
-    def use(self):
-        self.use = True
-        self.health = self.health + 10
-        self.amount = self.amount - 1
-        print("You have used a greater health potion.")
-        self.use = False
-
-
-class GreaterManaPotion(Consumable):
-    def __init__(self):
-        super(GreaterManaPotion, self).__init__("0", "10", "Greater Mana Potion", "A potion the will restore 10 Mana.",
-                                                "150")
-
-    def use(self):
-        self.use = True
-        self.mana = self.mana + 10
-        self.amount = self.amount - 1
-        print("You have used a greater mana potion.")
-        self.use = False
-
-
-class RegularManaPotion(Consumable):
-    def __init__(self):
-        super(RegularManaPotion, self).__init__("0", "5", "Regualr Mana Potion", "A potion the will restore 5 Mana.",
-                                                "100")
-
-    def use(self):
-        self.use = True
-        self.mana = self.mana + 5
-        self.amount = self.amount - 1
-        print("You have used a regular mana potion.")
-        self.use = False
-
-
-class LesserManaPotion(Consumable):
-    def __init__(self):
-        super(LesserManaPotion, self).__init__("0", "5", "Lesser Mana Potion", "A potion the will restore 3 Mana.", "50")
-
-    def use(self):
-        self.use = True
-        self.mana = self.mana + 3
-        self.amount = self.amount - 1
-        print("You have used a lesser mana potion.")
-        self.use = False
+class LesserHealthPotion(Consumable):
+    def __init__(self, name, description, money, heal):
+        super(LesserHealthPotion, self).__init__(name, description, money)
+        self.heal = heal
 
 
 class Relic(Item):
-    def __init__(self, name, description, ability):
+    def __init__(self, name, description, money):
         super(Relic, self).__init__(name, description, None)
-        self.ability = ability
-
+        self.money = money
 
 class OffenseBooster(Relic):
-    def __init__(self, name, description, ability, damage):
-        super(OffenseBooster, self).__init__(name, description, ability)
-        self.ability = ability
-        self.damage = damage
+    def __init__(self, name, description, money, attack):
+        super(OffenseBooster, self).__init__(name, description, money)
+        self.attack = attack
+        self.money = money
 
 
 class HealthBooster(Relic):
-    def __init__(self, name, description, hp, ability):
-        super(HealthBooster, self).__init__(name, description, ability)
-        self.ability = ability
-        self.hp = hp
+    def __init__(self, name, description, money, health):
+        super(HealthBooster, self).__init__(name, description, money)
+        self.health = health
+        self.money = money
 
 
 class SpeedBooster(Relic):
-    def __init__(self, name, description, ability, attack_speed):
-        super(SpeedBooster, self).__init__(name, description, ability)
-        self.ability = ability
-        self.attack_speed = attack_speed
+    def __init__(self, name, description, money, speed):
+        super(SpeedBooster, self).__init__(name, description, money)
+        self.speed = speed
+        self.money = money
+
 
 HeavyArmor = HeavyArmor("HeavyArmor", 800, 2350, "Armor for people that tank damage. It's big, heavy, and sturdy.")
-LightArmor = LightArmor("LightArmor", 500, 2200, "Armor for people that move alot. Its light and strong.")
-
-
+LightArmor = LightArmor("LightArmor", 500, 2200, "Armor for people that move alot. Its light and strong.", 50)
+DangerousArmblades = DangerousArmblades("DangerousArmblades", 2000, 250,
+                                        "A very dangerous armblade that cuts through everything")
+HealthHammer = HealthHammer("HealthHammer", 2000, 125, "A huge hammer strong and sturdy hammer that gives health.", 400)
+SpeedRapier = SpeedRapier("SpeedRapier", 2000, 125, "A quick, strong, and powerful weapon that makes moving easier.",
+                          100)
+SpeedBooster = SpeedBooster("SpeedBooster", "A relic that boosts your speed", 950, 50)
+OffenseBooster = OffenseBooster("OffenseBooser", "A relic that boosts your attack",950, 50)
+HealthBooster = HealthBooster("HealthBooster", "A relic that boosts your health", 950, 200)
+HealthPotion = HealthPotion("HealthPotion", )
 
 your_inv = []
 max_health = 100
@@ -344,8 +284,8 @@ ally_shop = Room("ally_shop", "ally_base", None, None, None, None, None, None, N
                  "You are at the shop for allies where you buy items.", None)
 west_ally_open_field = Room("west_ally_open_field", "jungle_camp_speed_west", None, "middle_combat_field",
                             "west_ally_safety_zone", None, None, None, None,
-                            "You are at the west open field where you can fight but it is the outskirts of this place."
-                            , None)
+                            "You are at the west open field where you can fight but it is the outskirts of this place.",
+                            None)
 east_ally_open_field = Room("east_ally_open_field", "jungle_camp_speed_east", "middle_combat_field", None,
                             "east_safety_zone", None, None, None, "middle_combat_field",
                             "You are at the east open field where you can fight but it is the outskirts of this place.",
@@ -462,24 +402,16 @@ while True:
         armor_shop = [HeavyArmor, LightArmor]
         weapon_shop = [DangerousArmblades, SpeedRapier, HealthHammer]
         shop = [HeavyArmor, LightArmor, DangerousArmblades, SpeedRapier, HealthHammer, SpeedBooster, OffenseBooster,
-                HealthBooster, LesserHealthPotion, LesserManaPotion, HealthPotion, GreaterHealthPotion,
-                GreaterManaPotion, RegularManaPotion]
+                HealthBooster, LesserHealthPotion, HealthPotion, GreaterHealthPotion]
 
         if current_node == ally_shop:
 
             print("---SHOP---"
                   "\n_________________________________________________________________________________"
                   "\nHeavyArmor(0) DangerousArmblades(1) OffenseBooster(2) HealthBooster(3)\n"
-                  "\n"
+                  " 2350 Money      "
                   "\n_______________________________________"
-                  "__________________________________________\n" % ([HeavyArmor.health, LightArmor.health,
-                                                                     DangerousArmblades.attack, SpeedRapier.attack,
-                                                                     HealthHammer.attack, SpeedBooster.speed,
-                                                                     OffenseBooster.attack, HealthBooster.health,
-                                                                     LesserHealthPotion.heal, LesserManaPotion.manaheal,
-                                                                     HealthPotion.heal, GreaterHealthPotion.heal,
-                                                                     GreaterManaPotion.manaheal,
-                                                                     RegularManaPotion.manaheal])
+                  "__________________________________________\n")
 
             item_buying = input("What do you want to buy? (Type in the number)\nYOUR MONEY: %s\n>_" % you.money)
             try:
