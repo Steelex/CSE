@@ -171,10 +171,16 @@ class LightArmor(Armor):
 
 
 class DangerousArmblades(Weapon):
-    def __init__(self,name, money, attack, description):
+    def __init__(self, name, money, attack, description):
         super(DangerousArmblades, self).__init__(name, money, attack, description)
         self.attack = attack
         self.description = description
+
+
+class MetalSword(Weapon):
+    def __init___(self, name, money, attack, description):
+        super(MetalSword, self).__init__(name, money, attack, description)
+        self.attack = attack
 
 
 class HealthHammer(Weapon):
@@ -236,21 +242,24 @@ class SpeedBooster(Relic):
 
 HeavyArmor = HeavyArmor("HeavyArmor", 800, 2350, "Armor for people that tank damage. It's big, heavy, and sturdy.")
 LightArmor = LightArmor("LightArmor", 500, 2200, "Armor for people that move alot. Its light and strong.", 50)
-DangerousArmblades = DangerousArmblades("DangerousArmblades", 2000, 250,
+DangerousArmblades = DangerousArmblades("DangerousArmblades", 2000, 350,
                                         "A very dangerous armblade that cuts through everything")
-HealthHammer = HealthHammer("HealthHammer", 2000, 125, "A huge hammer strong and sturdy hammer that gives health.", 400)
-SpeedRapier = SpeedRapier("SpeedRapier", 2000, 125, "A quick, strong, and powerful weapon that makes moving easier.",
+HealthHammer = HealthHammer("HealthHammer", 2000, 200, "A huge hammer strong and sturdy hammer that gives health.", 400)
+SpeedRapier = SpeedRapier("SpeedRapier", 2000, 200, "A quick, strong, and powerful weapon that makes moving easier.",
                           100)
 SpeedBooster = SpeedBooster("SpeedBooster", "A relic that boosts your speed", 950, 50)
-OffenseBooster = OffenseBooster("OffenseBooser", "A relic that boosts your attack",950, 50)
+OffenseBooster = OffenseBooster("OffenseBooser", "A relic that boosts your attack", 950, 50)
 HealthBooster = HealthBooster("HealthBooster", "A relic that boosts your health", 950, 200)
-HealthPotion = HealthPotion("HealthPotion", )
+HealthPotion = HealthPotion("HealthPotion", "A medium sized health potion", 100, 200)
+LesserHealthPotion = LesserHealthPotion("LesserHealthPotion", "A smaller sized health potion", 50, 100)
+GreaterHealthPotion = GreaterHealthPotion("GreaterHealthPotion", "A big sized health potion", 300, 500)
+MetalSword = MetalSword("MetalSword", 150, 100, "A regular metal sword used for fighting")
 
 your_inv = []
 max_health = 100
 max_mana = 100
 max_inventory = [1, 2, 3, 4, 5, 6, 7]
-you = Character("Curious Man", 100, 100, "man in wonder", 10, 0, your_inv)
+you = Character("?", 100, 100, "?", 50, 0, your_inv)
 
 
 def fight(self, enemy):
@@ -321,7 +330,7 @@ behind_the_camps_east = Room("behind_the_camps_east", "jungle_camp_speed_east", 
                              None, "jungle_camp_mana_east", None, None, None, None,
                              "You are behind the jungle camps of the east.", None)
 enemy_base = Room("enemy_base", "enemy_shop", "east_enemy_safety_zone", "west_enemy_safety_zone", None, None, None,
-                  None, None, "You are at the ending point, Enemy_Base", "Enemy_Champion")
+                  None, None, "You are at the ending point, Enemy_Base", "Enemy_Boss_Champion")
 west_enemy_safety_zone = Room("west_enemy_safety_zone", "enemy_base", None, "enemy_base", "west_enemy_open_field",
                               "enemy_portal", None, None, None,
                               "You are at the safety zone for you and your team, West Enemy Safety Zone.", None)
@@ -347,7 +356,7 @@ enemy_portal = Room("enemy_portal", "ally_base", "ally_base", "ally_base", "ally
 middle_of_combat_field = Room("middle_combat_field", None, "jungle_camp_attack_west", "jungle_camp_attack_east", None,
                               "ally_open_field_east", "ally_open_field_west", "enemy_open_field_east",
                               "enemy_open_field_west", "You are at the combat field. The middle of the map. This is "
-                              "where you fight.", "Enemy Minions" "Aly Minions")
+                              "where you fight.", "Enemy Minions")
 
 
 current_node = ally_base
@@ -397,23 +406,24 @@ while True:
         print("Type 'southeast', 'northwest', 'south', 'west', 'east', 'north', 'southwest', 'northeast', 'se', 'nw',"
               " 's', 'w', 'e', 'n', 'sw', 'ne' to move.")
 
-
     if command == 'buy':
         armor_shop = [HeavyArmor, LightArmor]
         weapon_shop = [DangerousArmblades, SpeedRapier, HealthHammer]
         shop = [HeavyArmor, LightArmor, DangerousArmblades, SpeedRapier, HealthHammer, SpeedBooster, OffenseBooster,
-                HealthBooster, LesserHealthPotion, HealthPotion, GreaterHealthPotion]
+                HealthBooster, LesserHealthPotion, HealthPotion, GreaterHealthPotion, MetalSword]
 
         if current_node == ally_shop:
 
             print("---SHOP---"
-                  "\n_________________________________________________________________________________"
-                  "\nHeavyArmor(0) DangerousArmblades(1) OffenseBooster(2) HealthBooster(3)\n"
-                  " 2350 Money      "
+                  "\n______________________________________________________________________________ \n"
+                  "\n HeavyArmor(0)2350 Moneys   DangerousArmblades(1)2000 Moneys   OffenseBooster(2)950 Moneys\n"
+                  "\n HealthBooster(3)950 Moneys   SpeedBooster(4)950 Moneys   LightArmor(5)2200 Moneys\n"
+                  "\n SpeedRapier(6)2000 Moneys   HealthHammer(7)2000 Moneys   MetalSword(8)150 Moneys\n"
+                  "\n LesserHealthPotion(9)50 Moneys   GreaterHealthPotion(10)300 Moneys   HealthPotion(11)150 Moneys\n"
                   "\n_______________________________________"
                   "__________________________________________\n")
 
-            item_buying = input("What do you want to buy? (Type in the number)\nYOUR MONEY: %s\n>_" % you.money)
+            item_buying = input("What do you want to buy? (Type in the number)\nYour Moneys: %s\n>_" % you.money)
             try:
                 item_buy = shop[int(item_buying)]
                 if you.money < item_buy.money:
