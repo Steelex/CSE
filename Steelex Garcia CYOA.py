@@ -61,6 +61,11 @@ class Character(object):
         print("%s/5 health left" % self.health)
 
 
+class Enemy(Character):
+    def __init__(self, name, health, mana, description, attack, money, inventory):
+        super(Enemy, self).__init__(name, health, mana, description, attack, money, inventory)
+
+
 class Item(object):
     def __init__(self, name, money, attack):
         self.name = name
@@ -110,8 +115,6 @@ class Weapon(Item):
         self.attack = attack
         self.description = description
 
-
-    # BUY
     def buy(self):
         if you.money >= self.money:
             print("You buy a %s." % self.name)
@@ -208,6 +211,7 @@ class GreaterHealthPotion(Consumable):
         super(GreaterHealthPotion, self).__init__(name, description, money)
         self.heal = heal
 
+
 class LesserHealthPotion(Consumable):
     def __init__(self, name, description, money, heal):
         super(LesserHealthPotion, self).__init__(name, description, money)
@@ -218,6 +222,7 @@ class Relic(Item):
     def __init__(self, name, description, money):
         super(Relic, self).__init__(name, description, None)
         self.money = money
+
 
 class OffenseBooster(Relic):
     def __init__(self, name, description, money, attack):
@@ -259,7 +264,7 @@ your_inv = []
 max_health = 100
 max_mana = 100
 max_inventory = [1, 2, 3, 4, 5, 6, 7]
-you = Character("?", 100, 100, "?", 50, 0, your_inv)
+you = Character("?", 100, 100, "?", 50, 10000, your_inv)
 
 
 def fight(self, enemy):
@@ -280,6 +285,18 @@ def fight(self, enemy):
         print("There are no enemies.")
 
 
+Attack_Ogre = Enemy("Attack_Ogre", 1000, None, "An ogre that you kill and gets you an attack buff raising your attack.",
+                    20, 250, None)
+Enemy_Minion = Enemy("Enemy_Minion", 100, None, "A minion you can use to farm.", 5, 50, None)
+SpeedRaptor = Enemy("SpeedRaptor", 800, None, "A raptor that you kill and gets you a speed buff raising your speed", 10,
+                    250, None)
+Mana_Sentinal = Enemy("Mana_Sentinal", 900, None, "A sentinal that you kill and gets you mana regen", 15, 250, None)
+Enemy_Boss_Champion = Enemy("Enemy_Boss_Champion", 5000, None, "The enemy Boss champion. The strongest enemy there is.",
+                            90, 10000, None)
+Enemy_Champion = Enemy("Enemy_Champion", 2500, None, "An enemy champion. It's hard to kill.", 40, 5000, None)
+ENEMY_shop_BAWS = Enemy("ENEMY_shop_BAWS", 1, None, "He's health is low but his attack is high, Plus he's filthy rich.",
+                        900, 99999999, None)
+
 # Initialize Room
 ally_base = Room("ally base", None, "west_ally_safety_zone", "east_ally_safety_zone", "ally_shop", None, None, None,
                  None, "You are at the starting point, Ally_Base", None)
@@ -291,38 +308,38 @@ east_ally_safety_zone = Room("east_ally_safety_zone", "east_ally_open_field", "a
                              "You are at the safety zone for you and your team, East_Ally_Safety_Zone.", None)
 ally_shop = Room("ally_shop", "ally_base", None, None, None, None, None, None, None,
                  "You are at the shop for allies where you buy items.", None)
-west_ally_open_field = Room("west_ally_open_field", "jungle_camp_speed_west", None, "middle_combat_field",
+west_ally_open_field = Room("west_ally_open_field", "jungle_camp_mana_west", None, "middle_combat_field",
                             "west_ally_safety_zone", None, None, None, None,
                             "You are at the west open field where you can fight but it is the outskirts of this place.",
                             None)
 east_ally_open_field = Room("east_ally_open_field", "jungle_camp_speed_east", "middle_combat_field", None,
-                            "east_safety_zone", None, None, None, "middle_combat_field",
+                            "east_ally_safety_zone", None, None, None, "middle_combat_field",
                             "You are at the east open field where you can fight but it is the outskirts of this place.",
                             None)
 jungle_camp_mana_west = Room("jungle_camp_mana_west", "jungle_camp_attack_west", "behind_the_west_camps",
                              "middle_combat_field", "west_ally_open field", None, None, None, None,
                              "You are at the jungle camp where you can kill a monster for a timed mana regen boost.",
-                             "West Mana Sentinal")
-jungle_camp_speed_east = Room("jungle_camp_speed_east", "east_enemy_open_field", "behind_the_east_camps",
+                             "Mana_Sentinal")
+jungle_camp_speed_east = Room("jungle_camp_speed_east", "jungle_camp_attack_east", "behind_the_east_camps",
                               None, "jungle_camp_attack_east", None, None, None, None,
                               "You are at the jungle camp where you can kill a monster for a timed speed boost.",
-                              "Speed Raptor")
-jungle_camp_attack_west = Room("jungle_camp_attack_west", "jungle_camp_mana_west", "behind_the_west_camps",
-                               "middle_combat_field", "jungle_camp_speed_west", None, None, None, None,
+                              "Speed_Raptor")
+jungle_camp_attack_west = Room("jungle_camp_attack_west", "jungle_camp_speed_west", "behind_the_west_camps",
+                               "middle_combat_field", "jungle_camp_mana_west", None, None, None, None,
                                "You are at the jungle camp where you can kill a monster for a timed attack boost.",
-                               "Attack Ogre")
-jungle_camp_attack_east = Room("jungle_camp_attack_east", "jungle_camp_speed_east", "middle_combat_field",
+                               "Attack_Ogre")
+jungle_camp_attack_east = Room("jungle_camp_attack_east", "jungle_camp_mana_east", "middle_combat_field",
                                "behind_the_east_camps", "jungle_camp_mana_east", None, None, None, None,
                                "You are at the jungle camp where you can kill a monser for a timed attack boost.",
-                               "Attack Ogre")
-jungle_camp_mana_east = Room("jungle_camp_mana_east", "jungle_camp_attack_east", "middle_combat_field",
+                               "Attack_Ogre")
+jungle_camp_mana_east = Room("jungle_camp_mana_east", "east_enemy_open_field", "middle_combat_field",
                              "behind_the_east_camps", "east_ally_open_field", None, None, None, None,
                              "You are at the jungle camp where you can kil a monster for a timed mana boost",
-                             "Mana Sentinal")
+                             "Mana_Sentinal")
 jungle_camp_speed_west = Room("jungle_camp_speed_west", "west_enemy_open_field", "middle_combat_field,",
                               "behind_the_east_camps", "jungle_camp_attack_west", None, None, None, None,
                               "You are at the west jungle camp where you can kil a monster for a timed speed boost",
-                              "Speed Raptor")
+                              "Speed_Raptor")
 behind_the_camps_west = Room("behind_the_camps_west", "jungle_camp_mana_west", None, "jungle_camp_attack_west",
                              "jungle_camp_speed_west", None, None, None, None,
                              "You are behind the jungle camps of the west.", None)
@@ -333,30 +350,32 @@ enemy_base = Room("enemy_base", "enemy_shop", "east_enemy_safety_zone", "west_en
                   None, None, "You are at the ending point, Enemy_Base", "Enemy_Boss_Champion")
 west_enemy_safety_zone = Room("west_enemy_safety_zone", "enemy_base", None, "enemy_base", "west_enemy_open_field",
                               "enemy_portal", None, None, None,
-                              "You are at the safety zone for you and your team, West Enemy Safety Zone.", None)
+                              "You are at the safety zone for you and your team, West Enemy Safety Zone.",
+                              "Enemy_Champion")
 east_enemy_safety_zone = Room("east_enemy_safety_zone", "enemy_base", "enemy_portal", "enemy_base",
                               "east_enemy_open_field", None, None, None, None,
-                              "You are at the safety zone for you and your team, East Enemy Safety Zone.", None)
+                              "You are at the safety zone for you and your team, East Enemy Safety Zone.",
+                              "Enemy_Champion")
 enemy_shop = Room("enemy_shop", None, None, None, "enemy_base", None, None, None, None,
-                  "You are at the shop for allies where you buy items.", None)
+                  "You are at the shop for allies where you buy items.", "ENEMY_shop_BAWS")
 west_enemy_open_field = Room("west_enemy_open_field", "west_enemy_safety_zone", "middle_combat_field", None,
                              "jungle_camp_speed_west", None, None, None, None,
                              "You are at the west open field where you can fight but it is the outskirts of this "
-                             "place.", None)
+                             "place.", "Enemy_Minion")
 east_enemy_open_field = Room("east_enemy_open_field", "right_enemy_safety_zone", None, "middle_combat_field",
                              "jungle_camp_speed_east", None, None, None, None,
                              "You are at the east open field where you can fight but it is the outskirts of this"
-                             " place.", None)
+                             " place.", "Enemy_Minion")
 ally_portal = Room("ally_portal", "middle_combat_field", "left_ally_safety_zone", "right_ally_safety_zone", None, None,
-                   None, None, None, "You are at your portal. Protect your portal by stopping minions from entering.",
+                   None, None, None, "You are at your portal.",
                    None)
 enemy_portal = Room("enemy_portal", "ally_base", "ally_base", "ally_base", "ally_base", "ally_base", "ally_base",
                     "ally_base", "ally_base", "You entered the enemy portal. You will be teleported back to base for "
-                                              "safety", "Enemy Minions")
+                                              "safety", "Enemy_Minions")
 middle_of_combat_field = Room("middle_combat_field", None, "jungle_camp_attack_west", "jungle_camp_attack_east", None,
                               "ally_open_field_east", "ally_open_field_west", "enemy_open_field_east",
                               "enemy_open_field_west", "You are at the combat field. The middle of the map. This is "
-                              "where you fight.", "Enemy Minions")
+                              "where you fight.", "Enemy_Minion")
 
 
 current_node = ally_base
@@ -390,9 +409,20 @@ while True:
     else:
         print("Command not recognized.")
 
-
     if command == 'quit':
         exit(0)
+
+    if command == 'stats':
+        print('_______________________________')
+        print('MAX HP' + ' - ' + str(max_health))
+        print('ATT' + ' - ' + str(you.attack))
+        print('_______________________________')
+
+    if command == 'me':
+        print('_______________________________\n')
+        print(you.name)
+        print(you.description)
+        print('\n_______________________________')
 
     if command in short_directions:
         # Finds the command in short directions (index number)
@@ -429,11 +459,12 @@ while True:
                 if you.money < item_buy.money:
                     print("You're poor. Go farm some more fo moneys.")
                 if you.money >= item_buy.money:
-                    print("You buy a %s. %s" % (item_buy.name, item_buy.description))
+                    print("You bought a %s. %s" % (item_buy.name, item_buy.description))
                     your_inv.append(item_buy)
                     you.money -= item_buy.money
                     if item_buy in armor_shop:
                         max_health += item_buy.health
+            except ValueError:
                 print("That is not an item.")
             except IndexError:
                 print("That is not an item.")
