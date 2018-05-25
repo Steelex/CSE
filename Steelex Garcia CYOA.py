@@ -202,9 +202,10 @@ class DangerousArmblades(Weapon):
         self.health = health
 
 class MetalSword(Weapon):
-    def __init___(self, name, money, attack, description, health):
+    def __init__(self, name, money, attack, description, health):
         super(MetalSword, self).__init__(name, money, attack, description)
         self.attack = attack
+        self.description = description
         self.health = health
 
 class HealthHammer(Weapon):
@@ -273,6 +274,7 @@ HeavyArmor = HeavyArmor("HeavyArmor", 2350, 800, "Armor for people that tank dam
 LightArmor = LightArmor("LightArmor", 2200, 500, "Armor for people that move alot. Its light and strong.", 50)
 DangerousArmblades = DangerousArmblades("DangerousArmblades", 2000, 350,
                                         "A very dangerous armblade that cuts through everything", 0)
+MetalSword = MetalSword("MetalSword", 150, 25, "A regular metal sword used for fighting", 0)
 HealthHammer = HealthHammer("HealthHammer", 2000, 200, "A huge hammer strong and sturdy hammer that gives health.", 400)
 SpeedRapier = SpeedRapier("SpeedRapier", 2000, 200, "A quick, strong, and powerful weapon that makes moving easier.",
                           100, 0)
@@ -282,13 +284,12 @@ HealthBooster = HealthBooster("HealthBooster", "A relic that boosts your health"
 HealthPotion = HealthPotion("HealthPotion", "A medium sized health potion", 100, 200)
 LesserHealthPotion = LesserHealthPotion("LesserHealthPotion", "A smaller sized health potion", 50, 100)
 GreaterHealthPotion = GreaterHealthPotion("GreaterHealthPotion", "A big sized health potion", 300, 500)
-MetalSword = MetalSword("MetalSword", 100, 150, "A regular metal sword used for fighting")
 
 your_inv = []
 health = 100
 max_mana = 100
 max_inventory = []
-you = Character("?", 100, 100, "?", 50, 10000, your_inv)
+you = Character("?", 100, 100, "?", 50, 2500, your_inv)
 offense = ['fight']
 
 Attack_Ogre = Enemy("Attack_Ogre", 1000, None, "An ogre that you kill and gets you an attack buff raising your attack.",
@@ -297,11 +298,11 @@ Enemy_Minion = Enemy("Enemy_Minion", 100, None, "A minion you can use to farm.",
 Speed_Raptor = Enemy("Speed_Raptor", 800, None, "A raptor that you kill and gets you a speed buff raising your speed",
                      10, 250, None)
 Mana_Sentinal = Enemy("Mana_Sentinal", 900, None, "A sentinal that you kill and gets you mana regen", 15, 250, None)
-Enemy_Boss_Champion = Enemy("Enemy_Boss_Champion", 5000, None, "The enemy Boss champion. The strongest enemy there is.",
-                            90, 10000, None)
-Enemy_Champion = Enemy("Enemy_Champion", 2500, None, "An enemy champion. It's hard to kill.", 40, 5000, None)
-ENEMY_shop_BAWS = Enemy("ENEMY_shop_BAWS", 1, None, "He's health is low but his attack is high, Plus he's filthy rich.",
-                        1000, 99999999, None)
+Enemy_Boss_Champion = Enemy("Enemy_Boss_Champion", 10000, None, "The enemy Boss champion. The strongest enemy there is.",
+                            500, 20000, None)
+Enemy_Champion = Enemy("Enemy_Champion", 2500, None, "An enemy champion. It's hard to kill.", 100, 5000, None)
+ENEMY_shop_BAWS = Enemy("ENEMY_shop_BAWS", 500, None, "He's health is low but his attack is high, Plus he's filthy rich.",
+                        2000, 99999999, None)
 
 # Initialize Room
 ally_base = Room("ally base", None, "west_ally_safety_zone", "east_ally_safety_zone", "ally_shop", None, None, None,
@@ -325,7 +326,7 @@ east_ally_open_field = Room("east_ally_open_field", "jungle_camp_speed_east", "m
                             "You are at the east open field where you can fight but it is the outskirts of this place."
                             " There are no enemies", None)
 jungle_camp_mana_west = Room("jungle_camp_mana_west", "jungle_camp_attack_west", "behind_the_west_camps",
-                             "middle_of_combat_field", "west_ally_open field", None, None, None, None,
+                             "middle_of_combat_field", "west_ally_open_field", None, None, None, None,
                              "You are at the jungle camp where you can kill a monster for a timed mana regen boost.",
                              Mana_Sentinal)
 jungle_camp_speed_east = Room("jungle_camp_speed_east", "jungle_camp_attack_east", "behind_the_east_camps",
@@ -413,15 +414,13 @@ while True:
             current_node.move(command)
         except KeyError:
             print("You can't go that way.")
-    else:
-        print("Command not recognized.")
 
     if command == 'quit':
         exit(0)
 
     if command == 'stats':
         print('-------------------------------------------------------------------------------------------------------')
-        print('Current Health' + ' - ' + str(health))
+        print('Health' + ' - ' + str(you.health))
         print('Attack' + ' - ' + str(you.attack))
         print('-------------------------------------------------------------------------------------------------------')
 
@@ -446,8 +445,8 @@ while True:
               " 's', 'w', 'e', 'n', 'sw', 'ne' to move.")
 
     if command == 'buy':
-        armor_shop = [HeavyArmor, LightArmor]
-        weapon_shop = [DangerousArmblades, SpeedRapier, HealthHammer]
+        armor_shop = [HeavyArmor, LightArmor, HealthBooster]
+        weapon_shop = [DangerousArmblades, SpeedRapier, HealthHammer, OffenseBooster, MetalSword]
         shop = [HeavyArmor, DangerousArmblades, OffenseBooster, HealthBooster, SpeedBooster, LightArmor, SpeedRapier,
                 HealthHammer, MetalSword, LesserHealthPotion, GreaterHealthPotion, HealthPotion]
 
@@ -485,7 +484,7 @@ while True:
         elif current_node != ally_shop:
             print('You are not in the shop.')
 
-    if command == 'inv':
+    if command == 'items':
         for i in your_inv:
             print('[ ' + i.name + ' ]')
         if len(your_inv) == 0:
